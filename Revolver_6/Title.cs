@@ -2,10 +2,17 @@
 {
     public static void GameStart()
     {
-        Home();
+        //GameTitle();
+        GameHome();
     }
 
-    static void Home()
+    static void GameTitle()
+    {
+        Console.WriteLine("스파르타 던전에 오신것을 환영합니다");
+        GameHome();
+    }
+
+    static void GameHome()
     {
         Console.Clear();
         Console.WriteLine("스파르타 던전에 오신 여러분 환영합니다.");
