@@ -30,10 +30,10 @@ namespace Revolver_6
 
 
         public static List<MonsterStat> MonsterList = new List<MonsterStat>
-        {
-            new MonsterStat( "미니언", 2 , 6 , 15 , 0 , 0),
-            new MonsterStat("대포 미니언", 5, 10, 25, 0, 0),
-            new MonsterStat("대포 미니언", 5, 10, 25, 0, 0),
+        {                  //name, lv, hp, atk, gold, exp
+            new MonsterStat( "미니언"   , 2 , 6 , 15 , 0 , 0),
+            new MonsterStat("대포 미니언", 5, 15, 25, 0, 0),
+            new MonsterStat("공허충"    , 3, 10, 10, 0, 0),
         };
 
 
