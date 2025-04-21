@@ -9,6 +9,8 @@
     static void GameTitle()
     {
         Console.WriteLine("스파르타 던전에 오신것을 환영합니다");
+        //캐릭터 생성
+        //직업 선택
         GameHome();
     }
 
