@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Revolver_6
+﻿namespace Revolver_6
 {
     internal class GameManager
     {
+    
     }
 }
