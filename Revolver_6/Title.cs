@@ -1,7 +1,8 @@
-<<<<<<< HEAD
-﻿internal class Title
+namespace Revolver_6
 {
-    public static void GameStart()
+    internal class Title
+    {
+            public static void GameStart()
     {
         //GameTitle();
         GameHome();
@@ -56,12 +57,5 @@
                     break;
             }
         }
-=======
-namespace Revolver_6
-{
-    internal class Title
-    {
-    
->>>>>>> origin/test
     }
 }
