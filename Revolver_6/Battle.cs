@@ -35,7 +35,7 @@
 
             Console.WriteLine();
             Console.WriteLine();
-            Console.WriteLine($"[내정보]\nLv.{Profile.Level}  {Profile.Name} ({Profile.Class})\nHP {Profile.MaxHP}/{Profile.NowHP}\n");
+            Console.WriteLine($"[내정보]\nLv.{PlayerStats.}  {Profile.Name} ({Profile.Class})\nHP {Profile.MaxHP}/{Profile.NowHP}\n");
             //플레이어의 정보 출력합니다.
 
             Console.WriteLine("1. 공격\n원하시는 행동을 입력해주세요.\n>>");
