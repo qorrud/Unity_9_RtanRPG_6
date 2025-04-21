@@ -1,0 +1,16 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.vcxproj.user
+
+# Build results
+[Bb]in/
+[Oo]bj/
+*.exe
+*.dll
+*.pdb
+
+# Rider/Resharper
+.idea/
+*.DotSettings.user
