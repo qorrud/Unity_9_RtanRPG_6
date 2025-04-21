@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿internal class Title
 {
     public static void GameStart()
@@ -55,5 +56,12 @@
                     break;
             }
         }
+=======
+namespace Revolver_6
+{
+    internal class Title
+    {
+    
+>>>>>>> origin/test
     }
 }
