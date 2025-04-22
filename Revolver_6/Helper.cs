@@ -14,6 +14,16 @@ namespace Revolver_6
                 Console.ResetColor();
             }
         }
+        public static void TypingWrite(string color, object input, int speed = 50) // 줄바꿈 x
+        {
+            SelectColor(color);
+            string text = input.ToString();
+            foreach (char c in text)
+            {
+                Console.Write(c);
+                Thread.Sleep(speed);
+            }
+        }
 
         public static void Typing(string color1, object input1, int speed = 50)
         {
@@ -24,6 +34,7 @@ namespace Revolver_6
                 Console.Write(c);
                 Thread.Sleep(speed);
             }
+            Console.ResetColor();
             Console.WriteLine();
         }
 
@@ -44,6 +55,7 @@ namespace Revolver_6
                 Console.Write(c);
                 Thread.Sleep(speed);
             }
+            Console.ResetColor();
             Console.WriteLine();
         }
 
@@ -71,6 +83,7 @@ namespace Revolver_6
                 Console.Write(c);
                 Thread.Sleep(speed);
             }
+            Console.ResetColor();
             Console.WriteLine();
         }
 
@@ -103,7 +116,7 @@ namespace Revolver_6
             }
 
         }
-        // 사용방법 stirng input = YesOrNo(); 하면 input은 y or n 값을 받음
+        // 사용방법 string input = YesOrNo(); 하면 input은 y or n 값을 받음
 
 
         public static int WhatNum(int a, int b) // 숫자 입력 검증 메서드
