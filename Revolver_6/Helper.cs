@@ -128,6 +128,7 @@ namespace Revolver_6
                     break;
                 else
                 {
+                    Console.Clear();
                     Typing("red", "유효한 ", "", "숫자를 입력 해주십시오");
                     Console.WriteLine();
                 }
