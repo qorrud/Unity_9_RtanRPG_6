@@ -10,6 +10,7 @@ namespace Revolver_6
     {
         public static PlayerStats Player = new PlayerStats();
 
+
         public static MonsterData.MonsterStat monster = new MonsterData.MonsterStat();
 
         

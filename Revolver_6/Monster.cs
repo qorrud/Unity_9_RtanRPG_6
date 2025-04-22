@@ -37,6 +37,10 @@ namespace Revolver_6
             }
         }
 
+            public class MonsterFactory
+            {
+                
+
 
         public static List<MonsterData.MonsterStat> MonsterList = new List<MonsterData.MonsterStat>
         {                  //name,      lv, hp, atk, gold, exp
