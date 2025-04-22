@@ -34,6 +34,7 @@ namespace Revolver_6
                 Console.Write(c);
                 Thread.Sleep(speed);
             }
+            Console.ResetColor();
             Console.WriteLine();
         }
 
@@ -54,6 +55,7 @@ namespace Revolver_6
                 Console.Write(c);
                 Thread.Sleep(speed);
             }
+            Console.ResetColor();
             Console.WriteLine();
         }
 
@@ -81,6 +83,7 @@ namespace Revolver_6
                 Console.Write(c);
                 Thread.Sleep(speed);
             }
+            Console.ResetColor();
             Console.WriteLine();
         }
 
@@ -128,7 +131,6 @@ namespace Revolver_6
                     break;
                 else
                 {
-                    Console.Clear();
                     Typing("red", "유효한 ", "", "숫자를 입력 해주십시오");
                     Console.WriteLine();
                 }
