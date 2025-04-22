@@ -16,7 +16,7 @@ namespace Revolver_6
         internal static void My_Phase()
         //플레이어의 턴일때 실행되는 함수입니다. 플레이어의 턴이 끝나면  turn 은 false로 변경해서 적의 턴으로 넘어갑니다.
         {
-            //MonsterFactory() 랜덤 몬스터 소환 로직 넣을껍니다.
+            
             Console.Clear();
 
             Typing("Red", "Battle!");
@@ -83,6 +83,7 @@ namespace Revolver_6
             if (isavoid == true) //회피했을때
             {
                 TypingWrite("white", $"{monster[input].Name}을(를) 공격했지만 아무 일도 일어나지 않았습니다..."); //TypingWrite 함수 갱신되기 전에 사용
+                isavoid = false;
 
             }
             else //회피 안했을때
