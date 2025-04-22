@@ -11,7 +11,7 @@ namespace Revolver_6
         static int Monster_count = MonsterData.MonsterList.Count; //몬스터 개수를 새기위한 카운트입니다. Dead 됐을시 1개씩 차감하고 0이되면 전투에서 승리한 걸로 취급
 
 
-        //int rage = 0; // 쓸 지는 모르겠지만 광폭화 스택입니다. 플레이어, 몬스터의 턴이 끝나면 1씩 증가하고 일정 수치 이상이 된다면 몬스터의 스탯이 뻥튀기 되는 거 넣어볼 생각인데 나중에..
+        static int rage = 0; // 쓸 지는 모르겠지만 광폭화 스택입니다. 플레이어, 몬스터의 턴이 끝나면 1씩 증가하고 일정 수치 이상이 된다면 몬스터의 스탯이 뻥튀기 되는 거 넣어볼 생각인데 나중에..
 
         internal static void My_Phase()
         //플레이어의 턴일때 실행되는 함수입니다. 플레이어의 턴이 끝나면  turn 은 false로 변경해서 적의 턴으로 넘어갑니다.
@@ -57,20 +57,38 @@ namespace Revolver_6
 
             //몬스터 생성 로직에 따라 코드 넣을 생각입니다. 
 
-
-            Typing("Red", "Battle!\n");
-            //플레이어의 이름 의 공격!
-            TypingWrite("white", $"Lv");
-            TypingWrite("red", $"{MonsterData.MonsterList[input - 1].Level}");
-            TypingWrite("white", $"{MonsterData.MonsterList[input - 1].Name}을(를) 맞췄습니다. [데미지 : "); //TypingWrite 함수 갱신되기 전에 사용
             int Player_baseAttack = Player.basePower;
 
             int Player_error = (int)Math.Ceiling(Player_baseAttack * 0.1); //공격력의 오차 설정
             int min = Player_baseAttack - Player_error; //최소 데미지
             int max = Player_baseAttack + Player_error; //최대 데미지
             Random random = new Random();
-            int player_damage = random.Next(min, max + 1); // 오차에 따른 랜덤 데미지 설정하기
-            TypingWrite("red", $"{player_damage}\n");
+            int player_damage = random.Next((int)min, (int)max + 1); // 오차에 따른 랜덤 데미지 설정하기
+
+
+            int player_critical = random.Next(1, 101); //크리티컬 랜덤 설정
+            bool iscritical = false;
+            //크리티컬 발생시 데미지 1.6배로 하고 아니면 iscritical false로 전환합니다.
+            if (player_critical <= 15)
+            {
+                player_damage = (int)Math.Ceiling(player_damage * 1.6);
+                iscritical = true;
+            }
+            else
+            {
+                iscritical = false;
+            }
+            Typing("Red", "Battle!\n");
+            Typing("white", "샌즈의 공격!");
+            TypingWrite("white", $"Lv");
+            TypingWrite("red", $"{MonsterData.MonsterList[input - 1].Level}");
+            TypingWrite("white", $"{MonsterData.MonsterList[input - 1].Name}을(를) 맞췄습니다. [데미지 : "); //TypingWrite 함수 갱신되기 전에 사용
+
+
+            TypingWrite("red", $"{player_damage}");
+            TypingWrite("white", "]");
+            if (iscritical) TypingWrite("red", "치명타 공격!");
+            
             TypingWrite("white", $"Lv");
             TypingWrite("red", $"{MonsterData.MonsterList[input - 1].Level}");
             TypingWrite("white", $"{MonsterData.MonsterList[input - 1].Name}\n");
@@ -176,8 +194,10 @@ namespace Revolver_6
 
             }
             Player_turn = true; //몬스터의 턴이 끝나면 플레이어의 턴을 실행합니다.
+            rage++;
+            Rage();
             My_Phase();
-
+            
 
         }
 
@@ -207,5 +227,20 @@ namespace Revolver_6
 
 
         }//플레이어 턴이 끝났을때 실행되는 함수입니다.
+
+        internal static void Rage() //rage가 5이상 부터 몬스터 공격력 체력 2배로 증가
+        {
+            if (rage >= 5)
+            {
+                foreach (var monster in MonsterData.MonsterList)
+                {
+                    monster.Attack *= 2;
+                    monster.HP *= 2;
+                }
+
+                Typing("red", "\n몬스터들이 광폭화 상태가 되었습니다! 공격력과 체력이 2배로 증가합니다!\n");
+                rage = 0; 
+            }
+        }
     }
 }
