@@ -51,31 +51,27 @@ namespace Revolver_6
         };
         public class MonsterFactory
         {
-            Random random = new Random();
-            int[] MonsterNumber = new int[4]; // 일단 몬스터 수는 4자리로 고정
-
-            public void RandomSpawn()
+            public static int[] RandomSpawn()
             {
+                Random random = new Random();
+                int[] MonsterNumber = new int[random.Next(1, 5)];
                 for (int i = 0; i < 3; i++)
                 {
-                    MonsterNumber[i] = random.Next(1, 4);
+                    MonsterNumber[i] = random.Next(1, 5);
                 }
+                return MonsterNumber;
             }
-            List<MonsterStat> spawnMonster = new List<MonsterStat>();
-            public void MonsterSpwan()
+            public static MonsterStat[] MonsterSpwan()
             {
-                for (int i = 0; i < 4; i++)
+                int[] a = RandomSpawn();
+                MonsterStat[] Dummy = new MonsterStat[a.Length];
+                for (int i = 0; i < a.Length; i++)
                 {
-                    int index = MonsterNumber[i];
-                    MonsterStat SpawnedMonster = MonsterList.Find(m => m.Index == index);
-                    MonsterStat monster = new MonsterStat(SpawnedMonster);
-                    spawnMonster.Add(monster);
+                    Dummy[i] = MonsterList[a[i]];
                 }
 
-
+                return Dummy;
+            }
         }
-        }
-
-
     }
 }
