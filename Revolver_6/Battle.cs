@@ -65,11 +65,19 @@ namespace Revolver_6
             Random random = new Random();
             int player_damage = random.Next((int)min, (int)max + 1); // 오차에 따른 랜덤 데미지 설정하기
 
-
+            int player_avoid = random.Next(1, 101);
             int player_critical = random.Next(1, 101); //크리티컬 랜덤 설정
-            bool iscritical = false;
+            bool iscritical = false; //크리티컬뜸?
+            bool isavoid = false; //피함?
+            if (player_avoid <= 10) // 10%확률로 회피했으면 데미지 0
+            {
+
+                isavoid = true;
+                player_damage = 0;
+            }
+
             //크리티컬 발생시 데미지 1.6배로 하고 아니면 iscritical false로 전환합니다.
-            if (player_critical <= 15)
+            if (player_critical <= 15 && isavoid == false) //회피했으면 작동하면 안됨
             {
                 player_damage = (int)Math.Ceiling(player_damage * 1.6);
                 iscritical = true;
@@ -78,16 +86,28 @@ namespace Revolver_6
             {
                 iscritical = false;
             }
+
+
             Typing("Red", "Battle!\n");
             Typing("white", "샌즈의 공격!");
             TypingWrite("white", $"Lv");
             TypingWrite("red", $"{MonsterData.MonsterList[input - 1].Level}");
-            TypingWrite("white", $"{MonsterData.MonsterList[input - 1].Name}을(를) 맞췄습니다. [데미지 : "); //TypingWrite 함수 갱신되기 전에 사용
+            if (isavoid == true) //회피했을때
+            {
+                TypingWrite("white", $"{MonsterData.MonsterList[input - 1].Name}을(를) 공격했지만 아무 일도 일어나지 않았습니다..."); //TypingWrite 함수 갱신되기 전에 사용
+
+            }
+            else //회피 안했을때
+            { 
+                TypingWrite("white", $"{MonsterData.MonsterList[input - 1].Name}을(를) 맞췄습니다. [데미지 : "); //TypingWrite 함수 갱신되기 전에 사용
+                TypingWrite("red", $"{player_damage}");
+                TypingWrite("white", "]");
 
 
-            TypingWrite("red", $"{player_damage}");
-            TypingWrite("white", "]");
-            if (iscritical) TypingWrite("red", "치명타 공격!");
+            }
+
+
+            if (iscritical ==true && isavoid == false) TypingWrite("red", "치명타 공격!");
             
             TypingWrite("white", $"Lv");
             TypingWrite("red", $"{MonsterData.MonsterList[input - 1].Level}");
