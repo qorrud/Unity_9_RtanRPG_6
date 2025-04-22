@@ -255,7 +255,7 @@ namespace Revolver_6
                 foreach (var monster in MonsterData.MonsterList)
                 {
                     monster.Attack *= 2;
-                    monster.HP *= 2;
+                    monster.HP *= 2; 
                 }
 
                 Typing("red", "\n몬스터들이 광폭화 상태가 되었습니다! 공격력과 체력이 2배로 증가합니다!\n");
