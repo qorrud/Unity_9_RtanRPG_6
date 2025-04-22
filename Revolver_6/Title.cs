@@ -37,12 +37,15 @@ namespace Revolver_6
 
                     //string inputA = Helper.YesOrNo
 
+                    Helper.Typing("", "아직 구현되지 않은 기능입니다.");
+                    Thread.Sleep(1000);
                     GameHome();
                     break;
 
                 case 2:
                     // 데이터 로드
-                    Helper.Typing("", "미구현된 기능입니다.");
+                    Helper.Typing("", "아직 구현되지 않은 기능입니다.");
+                    Thread.Sleep(1000);
                     GameHome();
                     break;
 
