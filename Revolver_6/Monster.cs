@@ -36,9 +36,15 @@ namespace Revolver_6
                 Index = index;
             }
 
-            public void Display()
+            public void Display(MonsterStat[] monster)
             {
-                Console.Write($"Lv.{Level} {Name}   HP{HP}");
+                for (int i = 0; i < monster.Length; i++)
+                {
+                    Helper.TypingWrite("blue", i+1,0);
+                    Helper.TypingWrite("", " Lv.",0);
+                    Helper.Typing("magenta", monster[i].Level, "", $" {monster[i].Name}  HP ", "magenta", monster[i].HP,0);
+                    Thread.Sleep(200);
+                }
             }
         }
 
@@ -69,7 +75,7 @@ namespace Revolver_6
                 MonsterStat[] Dummy = new MonsterStat[a.Length];
                 for (int i = 0; i < a.Length; i++)
                 {
-                    Dummy[i]= new MonsterStat();
+                    Dummy[i] = new MonsterStat();
                     Dummy[i].Name = MonsterList[a[i]].Name;
                     Dummy[i].Level = MonsterList[a[i]].Level;
                     Dummy[i].Attack = MonsterList[a[i]].Attack;

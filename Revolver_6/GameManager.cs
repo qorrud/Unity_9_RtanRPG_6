@@ -6,7 +6,7 @@ namespace Revolver_6
     {
         public void NewPlayer(string name, ClassType Job) // 플레이어 객체를을 초기화 하는 함수
         {
-            Player = new PlayerStats(name, Job);
+            Player = new PlayerInfo(name, Job);
         }
 
         public void NewMonster() // 몬스터 객체를 초기화 하는 함수
