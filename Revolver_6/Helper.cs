@@ -14,6 +14,16 @@ namespace Revolver_6
                 Console.ResetColor();
             }
         }
+        public static void TypingWrite(string color, object input, int speed = 50) // 줄바꿈 x
+        {
+            SelectColor(color);
+            string text = input.ToString();
+            foreach (char c in text)
+            {
+                Console.Write(c);
+                Thread.Sleep(speed);
+            }
+        }
 
         public static void Typing(string color1, object input1, int speed = 50)
         {
