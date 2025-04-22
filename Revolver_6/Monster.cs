@@ -36,7 +36,7 @@ namespace Revolver_6
                 Index = index;
             }
 
-            public void Display(MonsterStat[] monster)
+            public static void Display(MonsterStat[] monster)
             {
                 for (int i = 0; i < monster.Length; i++)
                 {
