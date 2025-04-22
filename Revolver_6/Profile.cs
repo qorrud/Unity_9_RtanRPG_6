@@ -49,6 +49,7 @@ namespace Revolver_6
             {
                 case ClassType.knight:
                     MaxHp = 150;
+                    Power = 10;
                     break;
 
                 case ClassType.archer:
