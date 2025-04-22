@@ -7,9 +7,9 @@ namespace Revolver_6
     internal static class Battle
     {
 
+
         static bool Player_turn = true; //플레이어의 턴은 true 몬스터의 턴은 false로 할게요
         static int Monster_count = MonsterData.MonsterList.Count; //몬스터 개수를 새기위한 카운트입니다. Dead 됐을시 1개씩 차감하고 0이되면 전투에서 승리한 걸로 취급
-
 
         static int rage = 0; // 쓸 지는 모르겠지만 광폭화 스택입니다. 플레이어, 몬스터의 턴이 끝나면 1씩 증가하고 일정 수치 이상이 된다면 몬스터의 스탯이 뻥튀기 되는 거 넣어볼 생각인데 나중에..
 
