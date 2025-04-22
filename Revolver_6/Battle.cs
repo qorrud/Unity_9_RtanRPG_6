@@ -146,7 +146,7 @@ namespace Revolver_6
                     TypingWrite("white", "HP");
                     TypingWrite("red", $" {Player.CurrentHP} ");
                     TypingWrite("white", "-> ");
-
+                    
                     Player.CurrentHP -= Monster_damage; //데미지 입음
                     if (Player.CurrentHP < 0) //플레이어가 체력이 0이하가 됐을때
                     {
@@ -163,7 +163,7 @@ namespace Revolver_6
                         TypingWrite("red", $"{Player.CurrentHP}\n\n");
 
                         Typing("red", "0", "white", " 다음\n");
-                        Typing("white", "대상을 선택해주세요.\n>>");
+                        Typing("white", ">>");
                         WhatNum(0, 0);
                         Console.Clear();
                     }
