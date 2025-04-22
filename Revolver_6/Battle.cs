@@ -1,25 +1,12 @@
 ﻿using static Revolver_6.Helper;
 using static Revolver_6.Data;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Revolver_6
 {
     internal static class Battle
     {
 
-        //    - 공격을 선택하면 몬스터 앞에 숫자가 표시됩니다.
-        //    - 일치하는 몬스터를 선택하지 않았다면(예제에서 1~3이외 선택시)
-        //    - **잘못된 입력입니다** 출력
-        //    - 이미 죽은 몬스터를 공격했다면
-        //    - **잘못된 입력입니다** 출력
-        //    - 몬스터를 알맞게 선택했다면
-        //    - 해당 몬스터 공격
-        //           최종 공격력 9 ~ 11 랜덤 값
-        //    - 오차가 소수점이라면 올림 처리합니다.
-        //          - 공격력 5
-        //          오차 0.5 → 1  (올림처리)
-        //          최종 공격력 4 ~ 6  랜덤 값
-        //    - 몬스터가 죽었다면 체력 대신 Dead 으로 표시됩니다.
-        //    - 몬스터가 죽었다면 해당 몬스터에 텍스트는 전부 어두운 색으로 표시합니다.
         static bool Player_turn = true; //플레이어의 턴은 true 몬스터의 턴은 false로 할게요
         static int Monster_count = MonsterData.MonsterList.Count; //몬스터 개수를 새기위한 카운트입니다. Dead 됐을시 1개씩 차감하고 0이되면 전투에서 승리한 걸로 취급
 
@@ -74,8 +61,8 @@ namespace Revolver_6
             Typing("Red", "Battle!\n");
             //플레이어의 이름 의 공격!
             TypingWrite("white", $"Lv");
-            TypingWrite("red", $"{monster.Level}");
-            TypingWrite("white", $"{monster.Name}을(를) 맞췄습니다. [데미지 : "); //TypingWrite 함수 갱신되기 전에 사용
+            TypingWrite("red", $"{MonsterData.MonsterList[input - 1].Level}");
+            TypingWrite("white", $"{MonsterData.MonsterList[input - 1].Name}을(를) 맞췄습니다. [데미지 : "); //TypingWrite 함수 갱신되기 전에 사용
             int Player_baseAttack = Player.basePower;
 
             int Player_error = (int)Math.Ceiling(Player_baseAttack * 0.1); //공격력의 오차 설정
@@ -85,25 +72,25 @@ namespace Revolver_6
             int player_damage = random.Next(min, max + 1); // 오차에 따른 랜덤 데미지 설정하기
             TypingWrite("red", $"{player_damage}\n");
             TypingWrite("white", $"Lv");
-            TypingWrite("red", $"{monster.Level}");
-            TypingWrite("white", $"{monster.Name}\n");
+            TypingWrite("red", $"{MonsterData.MonsterList[input - 1].Level}");
+            TypingWrite("white", $"{MonsterData.MonsterList[input - 1].Name}\n");
             TypingWrite("white", "HP");
-            TypingWrite("red", $"{monster.HP}");
+            TypingWrite("red", $"{MonsterData.MonsterList[input - 1].HP}");
             TypingWrite("white", "->");
-            monster.HP -= player_damage; //데미지 계산
-            if (monster.HP < 0) //체력이 마이너스가 되면 안되니까 음수로 되면 0으로 설정합니다.
+            MonsterData.MonsterList[input - 1].HP -= player_damage; //데미지 계산
+            if (MonsterData.MonsterList[input - 1].HP < 0) //체력이 마이너스가 되면 안되니까 음수로 되면 0으로 설정합니다.
             {
 
-                monster.HP = 0;
+                MonsterData.MonsterList[input - 1].HP = 0;
             }
-            if (monster.HP == 0) // 몬스터의 체력이 0이 된다면 죽이는 로직
+            if (MonsterData.MonsterList[input - 1].HP == 0) // 몬스터의 체력이 0이 된다면 죽이는 로직
             {
                 TypingWrite("gray", " Dead\n");
                 Monster_count--;
             }
             else //죽지 않았다면 남은 체력을 표시
             {
-                TypingWrite("white", $" {monster.HP - player_damage}\n");
+                TypingWrite("white", $" {MonsterData.MonsterList[input - 1].HP - player_damage}\n");
 
 
 
@@ -117,24 +104,9 @@ namespace Revolver_6
                 Player_turn = false; //플레이어의 턴이 종료됐으므로 false로 변경 후 몬스터의 턴 시작
 
                 Console.Clear();
-                if (Player_turn == false && Monster_count !=0) //아 근데 저거 bool값 굳이 필요한가 싶기도 하고.. //몬스터가 살아있을때만 몬스터 페이즈로 넘어갑니다.
-                {
-                    Monster_Phase(); //몬스터 페이즈 실행
 
+                Player_Turn_End();
 
-                }
-                else if (Player_turn == false && Monster_count ==0)
-                {
-                    Typing("red", "Battle! - Result\n");
-                    Typing("green", "Vitory\n");
-
-                    Typing("white",$"던전에서 몬스터 ","red",$"{MonsterData.MonsterList.Count}","white","마리를 잡았습니다.");
-                    
-                    
-
-
-
-                }
 
 
 
@@ -153,7 +125,9 @@ namespace Revolver_6
 
 
                 }
-                else { //몬스터가 살아있다면
+                else
+                { //몬스터가 살아있다면
+
 
                     int Monster_baseAttack = monster.Attack;
 
@@ -163,22 +137,23 @@ namespace Revolver_6
                     Random random = new Random();
                     int Monster_damage = random.Next(min, max + 1); // 오차에 따른 랜덤 데미지 설정하기
                     Typing("white", "Lv.", "red", $"{monster.Level}", "white", $"{monster.Name}의 공격!");
-                    TypingWrite("white", $"{Player.name}을(를) 맞췃습니다.");
+                    TypingWrite("white", $"샌즈 을(를) 맞췃습니다."); //잠시 플레이어 이름 임의로 넣을게여
                     TypingWrite("white", "    [데미지 :  ");
                     TypingWrite("red", Monster_damage);
                     TypingWrite("white", "]\n\n");
 
-                    Typing("white", "Lv.", "red", $"{Player.Level}","white",$"{Player.name}");
+                    Typing("white", "Lv.", "red", $"{Player.Level}", "white", $"샌즈"); //잠시 플레이어 이름 임의로 넣을게여
                     TypingWrite("white", "HP");
                     TypingWrite("red", $" {Player.CurrentHP} ");
                     TypingWrite("white", "-> ");
+
                     Player.CurrentHP -= Monster_damage; //데미지 입음
                     if (Player.CurrentHP < 0) //플레이어가 체력이 0이하가 됐을때
                     {
                         Player.CurrentHP = 0;
                         TypingWrite("red", $"{Player.CurrentHP}\n\n");
 
-                        Typing("red", $"{Player.name}은 쓰러졌다!\n눈앞이 캄캄해진다...");
+                        Typing("red", $"샌즈은(는) 쓰러졌다!\n눈앞이 캄캄해진다..."); //잠시 플레이어 이름 임의로 넣을게여
                         //마을로 돌아가는 로직
 
 
@@ -205,5 +180,32 @@ namespace Revolver_6
 
 
         }
+
+        internal static void Player_Turn_End()
+        {
+            if (Player_turn == false && Monster_count != 0) //아 근데 저거 bool값 굳이 필요한가 싶기도 하고.. //몬스터가 살아있을때만 몬스터 페이즈로 넘어갑니다.
+            {
+                Monster_Phase(); //몬스터 페이즈 실행
+
+
+            }
+            else if (Player_turn == false && Monster_count == 0) //몬스터가 다 죽으면 실행합니다.
+            {
+                Typing("red", "Battle! - Result\n");
+                Typing("green", "Vitory!\n");
+
+                Typing("white", $"던전에서 몬스터 ", "red", $"{MonsterData.MonsterList.Count}", "white", "마리를 잡았습니다.");
+                Typing("red", "0.", "white", " 다음");
+
+                WhatNum(0, 0);
+                Console.Clear();
+
+                //마을로 돌아가는 로직
+
+
+            }
+
+
+        }//플레이어 턴이 끝났을때 실행되는 함수입니다.
     }
 }
