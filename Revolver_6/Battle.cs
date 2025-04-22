@@ -1,4 +1,5 @@
 ﻿using static Revolver_6.Helper;
+using static Revolver_6.Data;
 
 namespace Revolver_6
 {
@@ -37,7 +38,7 @@ namespace Revolver_6
 
             Console.WriteLine();
             Console.WriteLine();
-            //Console.WriteLine($"[내정보]\nLv.{Profile.stats.Level}  {Profile.stats.Level} ({Profile.stats.Level})\nHP {Profile.stats.Level}/{Profile.NowHP}\n");
+            Typing("white", $"[내정보]\nLv.{Player.Level}  {Player.Level} ({Player.Level})\nHP {Player.MaxHp}/{Player.CurrentHP}\n");
             //플레이어의 정보 출력합니다.
 
             //Profile.Player(); 
@@ -67,7 +68,10 @@ namespace Revolver_6
             {
                 Typing("Red", "Battle!\n");
                 //플레이어의 이름 의 공격!
-                Typing("white", "Lv.", "Red", $"{MonsterData.MonsterStat.Level}", "white", $"{MonsterData.MonsterStat.Name}을(를) 맞췄습니다.");
+                TypingWrite("white", $"Lv{monster.Level}");
+                TypingWrite("white",$"{monster.Name}을(를) 맞췄습니다. [데미지 : "); //TypingWrite 함수 갱신되기 전에 사용
+                Random random_Attack = new Random(); //공격력은 10%의 오차
+                TypingWrite("\n")
 
 
             }
