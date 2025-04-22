@@ -12,18 +12,18 @@ namespace Revolver_6
         knight = 1,
         archer = 2,
         rogue = 3,
-        magician = 4
+        magician = 4,
     }
 
 
     internal class Profile
     {
-        public void PlayerStats()
+        public static void PlayerStats()
         {
             Console.WriteLine($"Lv. {Player.Level}");
             Console.WriteLine($"Chad ({Player.Name})");
-            Console.WriteLine($"공격력 : {Player.basePower}");
-            Console.WriteLine($"방어력 : {Player.baseArmor}");
+            Console.WriteLine($"공격력 : {Player.Power}");
+            Console.WriteLine($"방어력 : {Player.Armor}");
             Console.WriteLine($"체 력 : {Player.CurrentHP}");
             Console.WriteLine($"Gold :  {Player.Gold} G");
         }
@@ -31,14 +31,12 @@ namespace Revolver_6
 
     public class PlayerInfo
     {
-        public string Name;
-        public ClassType Job;
+        public string Name = "기본";
+        public ClassType Job = ClassType.archer;
         public int Level { get; set; } = 1;
-        public int basePower { get; set; } = 10;
         public int Power { get; set; } = 0;
-        public int baseArmor { get; set; } = 5;
         public int Armor { get; set; } = 0;
-        public int CurrentHP;
+        public int CurrentHP = 1;
         public int MaxHp { get; set; } = 100;
         public int Gold { get; set; } = 1500;
 
@@ -46,7 +44,27 @@ namespace Revolver_6
         {
             Name = name;
             Job = job;
+
+            switch (job)
+            {
+                case ClassType.knight:
+                    MaxHp = 150;
+                    break;
+
+                case ClassType.archer:
+                    break;
+
+                case ClassType.rogue:
+                    break;
+
+                case ClassType.magician:
+                    break;
+
+            }
+
+
             CurrentHP = MaxHp;
+
         }
     }
 }

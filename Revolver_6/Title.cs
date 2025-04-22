@@ -2,12 +2,49 @@ namespace Revolver_6
 {
     internal class Title
     {
-        public static void GameStart()
+        public void GameStart()
         {
             GameTitle();
         }
 
-        static void GameTitle()
+        public ClassType ReadJob()
+        {
+            // 소개글 메서드 실행
+            ClassType Job = ClassType.knight;
+            bool check = false;
+            while (!check) 
+            {
+                int JobIndex = Helper.WhatNum(1,4);
+                Job = (ClassType)JobIndex;
+                Helper.Typing("", "선택하신 직업이 \'", "green", Job, "", "\' 맞습니까?");
+                string input = Helper.YesOrNo();
+                if (input == "y")
+                {
+                    check = true;
+                }
+                if (input == "n");
+            }
+            return Job;
+        }
+
+        public string ReadName()
+        {
+            string Name = "";
+            bool check = false;
+            while (!check) 
+            {
+                Name = Console.ReadLine() ?? "Null";
+                Helper.Typing("", "선택하신 이름이 \'", "green", Name, "", "\' 맞습니까?");
+                string input = Helper.YesOrNo();
+                if (input == "y")
+                {
+                    check = true;
+                }
+                if (input == "n");
+            }
+            return Name;
+        }
+        public void GameTitle()
         {
             Helper.Typing("yellow", "\n      ___           ___           ___           ___           ___           ___           ___     \r\n     /\\  \\         /\\  \\         /\\  \\         /\\  \\         /\\  \\         /\\  \\         /\\__\\    \r\n    /::\\  \\       /::\\  \\       /::\\  \\       /::\\  \\        \\:\\  \\       /::\\  \\       /::|  |   \r\n   /:/\\ \\  \\     /:/\\:\\  \\     /:/\\:\\  \\     /:/\\:\\  \\        \\:\\  \\     /:/\\:\\  \\     /:|:|  |   \r\n  _\\:\\~\\ \\  \\   /::\\~\\:\\  \\   /::\\~\\:\\  \\   /::\\~\\:\\  \\       /::\\  \\   /::\\~\\:\\  \\   /:/|:|  |__ \r\n /\\ \\:\\ \\ \\__\\ /:/\\:\\ \\:\\__\\ /:/\\:\\ \\:\\__\\ /:/\\:\\ \\:\\__\\     /:/\\:\\__\\ /:/\\:\\ \\:\\__\\ /:/ |:| /\\__\\\r\n \\:\\ \\:\\ \\/__/ \\/__\\:\\/:/  / \\/__\\:\\/:/  / \\/_|::\\/:/  /    /:/  \\/__/ \\/__\\:\\/:/  / \\/__|:|/:/  /\r\n  \\:\\ \\:\\__\\        \\::/  /       \\::/  /     |:|::/  /    /:/  /           \\::/  /      |:/:/  / \r\n   \\:\\/:/  /         \\/__/        /:/  /      |:|\\/__/     \\/__/            /:/  /       |::/  /  \r\n    \\::/  /                      /:/  /       |:|  |                       /:/  /        /:/  /   \r\n     \\/__/                       \\/__/         \\|__|                       \\/__/         \\/__/    ", 0);
             Helper.Typing("", "\n스파르타 던전에 오신것을 환영합니다");
@@ -24,18 +61,7 @@ namespace Revolver_6
                 case 1:
                     // 캐릭터 이름 짓기, 직업선택
                     Helper.Typing("red", "스파르타에 찾아온, 당신의 이름은 무엇입니까?");
-
-                    Helper.TypingWrite("yellow", "\n>> ");
-
-                    //프로필에 네임 = Console.ReadLine() ?? "";
-
-                    //{이름},이 맞습니까?
-
-                    //string inputA = Helper.YesOrNo
-
-                    Helper.Typing("", "아직 구현되지 않은 기능입니다.");
-                    Thread.Sleep(1000);
-                    GameHome();
+                    Helper.TypingWrite("yellow", "\n>> ");              
                     break;
 
                 case 2:
@@ -53,7 +79,7 @@ namespace Revolver_6
             }
         }
 
-        static void GameHome()
+        public void GameHome()
         {
             Console.Clear();
             Helper.Typing("", "스파르타 던전에 오신 여러분 환영합니다.");
@@ -114,16 +140,10 @@ namespace Revolver_6
             }
         }
 
-        static void GameProfile()
+        public void GameProfile()
         {
             Helper.Typing("yellow", "■■■\t상태창\t■■■");
-
-            Helper.Typing("", $"\nLv.\t{Data.Player.Level}");
-            //Helper.Typing("", $"이름\t{Data.Player.Name}\t{Data.Player.Class}");
-            //Helper.Typing("", $"공격력\t{Data.Player.basePower}\t(+{power})");
-            //Helper.Typing("", $"방어력\t{Data.Player.baseArmor}\t(+{power})");
-            //Helper.Typing("", $"체력\t{Data.Player.CurrentHP}\t마력\t{Data.Player.CurrentMP}");
-            Helper.Typing("", $"소지금\t{Data.Player.Gold}");
+            Profile.PlayerStats();
 
             Helper.Typing("", "\n1. 장비관리", 0);
             Helper.Typing("", "2. 돌아가기", 0);
@@ -150,7 +170,7 @@ namespace Revolver_6
             }
         }
 
-        static void GameInventory()
+        public void GameInventory()
         {
             Helper.Typing("yellow", "■■■\t가방\t■■■");
 
@@ -181,7 +201,7 @@ namespace Revolver_6
             }
         }
 
-        static void GameQuest()
+        public void GameQuest()
         {
             Helper.Typing("yellow", "■■■\t임무\t■■■");
 
@@ -212,7 +232,7 @@ namespace Revolver_6
             }
         }
 
-        static void GameBattle()
+        public void GameBattle()
         {
             Helper.Typing("yellow", "■■■\t전투\t■■■");
 
@@ -230,10 +250,6 @@ namespace Revolver_6
             switch (input)
             {
                 case 1:
-                    //싸우러 가기
-                    Helper.Typing("", "아직 구현되지 않은 기능입니다.");
-                    Thread.Sleep(1000);
-                    GameHome();
                     break;
 
                 case 2:
