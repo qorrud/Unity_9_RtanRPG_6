@@ -90,7 +90,7 @@ namespace Revolver_6
             }
             else //죽지 않았다면 남은 체력을 표시
             {
-                TypingWrite("white", $" {MonsterData.MonsterList[input - 1].HP - player_damage}\n");
+                TypingWrite("white", $" {MonsterData.MonsterList[input - 1].HP} \n");
 
 
 
