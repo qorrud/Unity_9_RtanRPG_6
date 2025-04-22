@@ -19,7 +19,7 @@ namespace Revolver_6
 
             int input = Helper.WhatNum(1, 3);
 
-            switch (input) //캐릭터 생성, 로드
+            switch (input) //캐릭터 생성, 로드, 종료
             {
                 case 1:
                     // 캐릭터 이름 짓기, 직업선택
@@ -27,11 +27,11 @@ namespace Revolver_6
 
                     Helper.TypingWrite("yellow", "\n>> ");
 
-                    //프로필에 네임 = Console.ReadLine() ?? "";
+                    Data.Player.Name = Console.ReadLine() ?? "";
 
-                    //{이름},이 맞습니까?
+                    Helper.Typing("", $"{Data.Player.Name}, 이 맞습니까?");
 
-                    //string inputA = Helper.YesOrNo
+                    string inputA = Helper.YesOrNo();
 
                     Helper.Typing("", "아직 구현되지 않은 기능입니다.");
                     Thread.Sleep(1000);
@@ -119,10 +119,10 @@ namespace Revolver_6
             Helper.Typing("yellow", "■■■\t상태창\t■■■");
 
             Helper.Typing("", $"\nLv.\t{Data.Player.Level}");
-            //Helper.Typing("", $"이름\t{Data.Player.Name}\t{Data.Player.Class}");
-            //Helper.Typing("", $"공격력\t{Data.Player.basePower}\t(+{power})");
-            //Helper.Typing("", $"방어력\t{Data.Player.baseArmor}\t(+{power})");
-            //Helper.Typing("", $"체력\t{Data.Player.CurrentHP}\t마력\t{Data.Player.CurrentMP}");
+            Helper.Typing("", $"이름\t{Data.Player.Name}\t{Data.Player.Job}");
+            Helper.Typing("", $"공격력\t{Data.Player.basePower}\t(+)");
+            Helper.Typing("", $"방어력\t{Data.Player.baseArmor}\t(+)");
+            Helper.Typing("", $"체력\t{Data.Player.CurrentHP}");
             Helper.Typing("", $"소지금\t{Data.Player.Gold}");
 
             Helper.Typing("", "\n1. 장비관리", 0);
