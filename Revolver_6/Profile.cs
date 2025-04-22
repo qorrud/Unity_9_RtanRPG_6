@@ -16,7 +16,10 @@ namespace Revolver_6
 
     internal class Profile
     {
-        PlayerStats stats = new PlayerStats();
+        public void NewStats() // 플레이어 객체를을 초기화 하는 함수
+        {
+            PlayerStats stats = new PlayerStats();
+        }
         public void Player()
         {
             Console.WriteLine($"Lv. {stats.Level}");
@@ -39,5 +42,14 @@ namespace Revolver_6
         public int MaxHp { get; set; } = 100;
         public int Gold { get; set; } = 1500;
 
+        public string Name;
+        public ClassType Job;
+
+        public PlayerStats(string name, ClassType job)
+        {
+            Name = name;
+            Job = job;
+
+        }
     }
 }

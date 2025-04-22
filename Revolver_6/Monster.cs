@@ -42,20 +42,22 @@ namespace Revolver_6
             }
         }
 
-        public static List<MonsterData.MonsterStat> MonsterList = new List<MonsterData.MonsterStat>
+        public static Dictionary<int, MonsterStat> MonsterList = new Dictionary<int, MonsterStat>()
         {                  //           name,      lv, hp, atk, gold, exp, index
-            new MonsterData.MonsterStat( "미니언"   , 2, 6, 15, 0, 0, 1),
-            new MonsterData.MonsterStat("대포 미니언", 5, 15, 25, 0, 0, 2),
-            new MonsterData.MonsterStat("공허충"    , 3, 10, 10, 0, 0, 3),
-            new MonsterData.MonsterStat("공허의 전령", 8, 20, 20, 0, 0, 4),
+            {1, new MonsterData.MonsterStat( "미니언"   , 2, 6, 15, 0, 0, 1)},
+            {2, new MonsterData.MonsterStat("대포 미니언", 5, 15, 25, 0, 0, 2)},
+            {3, new MonsterData.MonsterStat("공허충"    , 3, 10, 10, 0, 0, 3)},
+            {4, new MonsterData.MonsterStat("공허의 전령", 8, 20, 20, 0, 0, 4)},
         };
         public class MonsterFactory
         {
+
+
             public static int[] RandomSpawn()
             {
                 Random random = new Random();
                 int[] MonsterNumber = new int[random.Next(1, 5)];
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < MonsterNumber.Length; i++)
                 {
                     MonsterNumber[i] = random.Next(1, 5);
                 }
@@ -67,9 +69,15 @@ namespace Revolver_6
                 MonsterStat[] Dummy = new MonsterStat[a.Length];
                 for (int i = 0; i < a.Length; i++)
                 {
-                    Dummy[i] = MonsterList[a[i]];
+                    Dummy[i]= new MonsterStat();
+                    Dummy[i].Name = MonsterList[a[i]].Name;
+                    Dummy[i].Level = MonsterList[a[i]].Level;
+                    Dummy[i].Attack = MonsterList[a[i]].Attack;
+                    Dummy[i].HP = MonsterList[a[i]].HP;
+                    Dummy[i].Gold = MonsterList[a[i]].Gold;
+                    Dummy[i].Exp = MonsterList[a[i]].Exp;
+                    Dummy[i].Index = MonsterList[a[i]].Index;
                 }
-
                 return Dummy;
             }
         }
