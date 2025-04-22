@@ -28,7 +28,7 @@ namespace Revolver_6
             //Spawn_Random_Monster() 랜덤 몬스터 소환 로직 넣을껍니다.
 
 
-            Typing("Red","Battle!");
+            Typing("Red", "Battle!");
             foreach (MonsterData.MonsterStat monster in MonsterData.MonsterList) // 몬스터 정보입니다.
             {
                 monster.Display();
@@ -63,15 +63,15 @@ namespace Revolver_6
 
             int input = WhatNum(1, monster_index);
             Console.Clear();
-            
-            if ( input == monster_index)
+
+            if (input == monster_index)
             {
                 Typing("Red", "Battle!\n");
                 //플레이어의 이름 의 공격!
                 TypingWrite("white", $"Lv{monster.Level}");
-                TypingWrite("white",$"{monster.Name}을(를) 맞췄습니다. [데미지 : "); //TypingWrite 함수 갱신되기 전에 사용
+                TypingWrite("white", $"{monster.Name}을(를) 맞췄습니다. [데미지 : "); //TypingWrite 함수 갱신되기 전에 사용
                 Random random_Attack = new Random(); //공격력은 10%의 오차
-                TypingWrite("\n")
+                // TypingWrite("\n")
 
 
             }
