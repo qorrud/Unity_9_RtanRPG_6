@@ -15,9 +15,7 @@ namespace Revolver_6
             Helper.Typing("", "\n1.캐릭터 생성\t2.불러오기\t3.게임 종료");
             Helper.Typing("", "\n원하시는 행동을 입력해주세요.");
 
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("\n>>  ");
-            Console.ResetColor();
+            Helper.TypingWrite("yellow", "\n>> ");
 
             int input = Helper.WhatNum(1, 3);
 
@@ -27,9 +25,7 @@ namespace Revolver_6
                     // 캐릭터 이름 짓기, 직업선택
                     Helper.Typing("red", "스파르타에 찾아온, 당신의 이름은 무엇입니까?");
 
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.Write(">>  ");
-                    Console.ResetColor();
+                    Helper.TypingWrite("yellow", "\n>> ");
 
                     //프로필에 네임 = Console.ReadLine() ?? "";
 
@@ -74,9 +70,7 @@ namespace Revolver_6
 
             Helper.Typing("", "\n원하시는 행동을 입력해주세요");
 
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("\n>>  ");
-            Console.ResetColor();
+            Helper.TypingWrite("yellow", "\n>> ");
 
             int input = Helper.WhatNum(1, 6);
 
@@ -124,21 +118,19 @@ namespace Revolver_6
         {
             Helper.Typing("yellow", "■■■\t상태창\t■■■");
 
-            //Helper.Typing("", $"\nLv.\t{level}");
-            //Helper.Typing("", $"이름\t{name}\t{job}");
-            //Helper.Typing("", $"공격력\t{basePower}\t(+{power})");
-            //Helper.Typing("", $"방어력\t{basedefens}\t(+{power})");
-            //Helper.Typing("", $"체력\t{hp}\t마력\t{mp}");
-            //Helper.Typing("", $"소지금\t{gold}");
+            Helper.Typing("", $"\nLv.\t{Data.Player.Level}");
+            //Helper.Typing("", $"이름\t{Data.Player.Name}\t{Data.Player.Class}");
+            //Helper.Typing("", $"공격력\t{Data.Player.basePower}\t(+{power})");
+            //Helper.Typing("", $"방어력\t{Data.Player.baseArmor}\t(+{power})");
+            //Helper.Typing("", $"체력\t{Data.Player.CurrentHP}\t마력\t{Data.Player.CurrentMP}");
+            Helper.Typing("", $"소지금\t{Data.Player.Gold}");
 
             Helper.Typing("", "\n1. 장비관리", 0);
             Helper.Typing("", "2. 돌아가기", 0);
 
             Helper.Typing("", "\n원하시는 행동을 입력해주세요");
 
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("\n>>  ");
-            Console.ResetColor();
+            Helper.TypingWrite("yellow", "\n>> ");
 
             int input = Helper.WhatNum(1, 2);
 
@@ -169,9 +161,7 @@ namespace Revolver_6
 
             Helper.Typing("", "\n원하시는 행동을 입력해주세요");
 
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("\n>>  ");
-            Console.ResetColor();
+            Helper.TypingWrite("yellow", "\n>> ");
 
             int input = Helper.WhatNum(1, 2);
 
@@ -202,9 +192,7 @@ namespace Revolver_6
 
             Helper.Typing("", "\n원하시는 행동을 입력해주세요");
 
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("\n>>  ");
-            Console.ResetColor();
+            Helper.TypingWrite("yellow", "\n>> ");
 
             int input = Helper.WhatNum(1, 2);
 
@@ -235,9 +223,7 @@ namespace Revolver_6
 
             Helper.Typing("", "\n원하시는 행동을 입력해주세요");
 
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("\n>>  ");
-            Console.ResetColor();
+            Helper.TypingWrite("yellow", "\n>> ");
 
             int input = Helper.WhatNum(1, 2);
 
