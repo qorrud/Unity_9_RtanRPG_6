@@ -113,7 +113,7 @@ namespace Revolver_6
             }
 
         }
-        // 사용방법 stirng input = YesOrNo(); 하면 input은 y or n 값을 받음
+        // 사용방법 string input = YesOrNo(); 하면 input은 y or n 값을 받음
 
 
         public static int WhatNum(int a, int b) // 숫자 입력 검증 메서드
