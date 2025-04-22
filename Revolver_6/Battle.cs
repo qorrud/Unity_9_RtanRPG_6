@@ -17,15 +17,10 @@ namespace Revolver_6
         //플레이어의 턴일때 실행되는 함수입니다. 플레이어의 턴이 끝나면  turn 은 false로 변경해서 적의 턴으로 넘어갑니다.
         {
             //MonsterFactory() 랜덤 몬스터 소환 로직 넣을껍니다.
-
+            
 
             Typing("Red", "Battle!");
-            foreach (MonsterData.MonsterStat monster in MonsterData.MonsterList) // 몬스터 정보입니다.
-            {
-                monster.Display();
-
-
-            }
+            monster.Display();
 
             Console.WriteLine();
             Console.WriteLine();
@@ -98,7 +93,7 @@ namespace Revolver_6
 
             }
             else //회피 안했을때
-            { 
+            {
                 TypingWrite("white", $"{MonsterData.MonsterList[input - 1].Name}을(를) 맞췄습니다. [데미지 : "); //TypingWrite 함수 갱신되기 전에 사용
                 TypingWrite("red", $"{player_damage}");
                 TypingWrite("white", "]");
@@ -107,8 +102,8 @@ namespace Revolver_6
             }
 
 
-            if (iscritical ==true && isavoid == false) TypingWrite("red", "치명타 공격!");
-            
+            if (iscritical == true && isavoid == false) TypingWrite("red", "치명타 공격!");
+
             TypingWrite("white", $"Lv");
             TypingWrite("red", $"{MonsterData.MonsterList[input - 1].Level}");
             TypingWrite("white", $"{MonsterData.MonsterList[input - 1].Name}\n");
@@ -184,7 +179,7 @@ namespace Revolver_6
                     TypingWrite("white", "HP");
                     TypingWrite("red", $" {Player.CurrentHP} ");
                     TypingWrite("white", "-> ");
-                    
+
                     Player.CurrentHP -= Monster_damage; //데미지 입음
                     if (Player.CurrentHP < 0) //플레이어가 체력이 0이하가 됐을때
                     {
@@ -217,7 +212,7 @@ namespace Revolver_6
             rage++;
             Rage();
             My_Phase();
-            
+
 
         }
 
@@ -255,11 +250,11 @@ namespace Revolver_6
                 foreach (var monster in MonsterData.MonsterList)
                 {
                     monster.Attack *= 2;
-                    monster.HP *= 2; 
+                    monster.HP *= 2;
                 }
 
                 Typing("red", "\n몬스터들이 광폭화 상태가 되었습니다! 공격력과 체력이 2배로 증가합니다!\n");
-                rage = 0; 
+                rage = 0;
             }
         }
     }
