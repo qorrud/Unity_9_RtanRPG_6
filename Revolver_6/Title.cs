@@ -10,7 +10,7 @@ namespace Revolver_6
 
         static void GameTitle()
         {
-            Console.WriteLine("스파르타 던전에 오신것을 환영합니다");
+            Helper.Typing("","스파르타 던전에 오신것을 환영합니다");
             //캐릭터 생성
             //직업 선택
             GameHome();
@@ -49,11 +49,6 @@ namespace Revolver_6
                         Helper.Typing("Red", "게임을 종료합니다.");
                         Thread.Sleep(1000);
                         Environment.Exit(0);
-                        break;
-
-                    default:
-                        Console.Clear();
-                        Helper.Typing("Red", "잘못된 입력입니다.");
                         break;
                 }
             }
