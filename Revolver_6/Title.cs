@@ -19,43 +19,44 @@ namespace Revolver_6
         static void GameHome()
         {
             Console.Clear();
-            Console.WriteLine("스파르타 던전에 오신 여러분 환영합니다.");
-            Console.WriteLine("이제 전투를 시작할 수 있습니다");
+            Helper.Typing("","스파르타 던전에 오신 여러분 환영합니다.");
+            Helper.Typing("","이제 전투를 시작할 수 있습니다");
 
-            Console.WriteLine("1. 상태 보기");
-            Console.WriteLine("2. 전투 시작");
-            Console.WriteLine("0. 게임 종료");
+            Helper.Typing("","1. 상태 보기");
+            Helper.Typing("", "2. 전투 시작");
+            Helper.Typing("", "0. 게임 종료");
 
             while (true)
             {
-                Console.WriteLine("원하시는 행동을 입력해주세요");
+                Helper.Typing("", "원하시는 행동을 입력해주세요");
                 Console.Write(">>  ");
 
-                string input = Console.ReadLine() ?? "";
+                int input = Helper.WhatNum(0, 2);
 
                 switch (input)
                 {
-                    case "1":
+                    case 1:
                         Console.Clear();
                         //상태창
                         break;
 
-                    case "2":
+                    case 2:
                         Console.Clear();
                         //전투 시작
                         break;
 
-                    case "0":
-                        Console.WriteLine("게임을 종료합니다.");
+                    case 0:
+                        Helper.Typing("Red", "게임을 종료합니다.");
                         Thread.Sleep(1000);
                         Environment.Exit(0);
                         break;
 
                     default:
                         Console.Clear();
-                        Console.WriteLine("잘못된 입력입니다.");
+                        Helper.Typing("Red", "잘못된 입력입니다.");
                         break;
                 }
             }
         }
     }
+}
