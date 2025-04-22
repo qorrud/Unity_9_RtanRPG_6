@@ -78,7 +78,7 @@ namespace Revolver_6
             Console.Write("\n>>  ");
             Console.ResetColor();
 
-            int input = Helper.WhatNum(1, 3);
+            int input = Helper.WhatNum(1, 6);
 
             switch (input) //상태, [가방], [임무] ,전투 ,[저장], 종료
             {
