@@ -22,7 +22,7 @@ namespace Revolver_6
             Helper.Typing("","스파르타 던전에 오신 여러분 환영합니다.");
             Helper.Typing("","이제 전투를 시작할 수 있습니다");
 
-            Helper.Typing("","1. 상태 보기");
+            Helper.Typing("", "1. 상태 보기");
             Helper.Typing("", "2. 전투 시작");
             Helper.Typing("", "0. 게임 종료");
 
