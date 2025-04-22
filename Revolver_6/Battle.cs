@@ -41,9 +41,10 @@ namespace Revolver_6
             //Console.WriteLine($"[내정보]\nLv.{Profile.stats.Level}  {Profile.stats.Level} ({Profile.stats.Level})\nHP {Profile.stats.Level}/{Profile.NowHP}\n");
             //플레이어의 정보 출력합니다.
 
-            Profile.Player();
+            //Profile.Player(); 
 
-            Console.WriteLine("1. 공격\n원하시는 행동을 입력해주세요.\n>>");
+
+            Helper.Typing("black", "1. 공격\n원하시는 행동을 입력해주세요.\n>>");
             
 
         }
