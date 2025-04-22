@@ -8,7 +8,7 @@ namespace Revolver_6
 {
     internal class Data
     {
-        public static PlayerStats Player;
+        public static PlayerInfo Player;
 
         public static MonsterData.MonsterStat[] monster;
         
