@@ -34,34 +34,33 @@ namespace Revolver_6
             Helper.Typing("", "2. 전투 시작", 0);
             Helper.Typing("", "0. 게임 종료", 0);
 
-            while (true)
+
+
+            Helper.Typing("", "원하시는 행동을 입력해주세요");
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write(">>  ");
+            Console.ResetColor();
+
+            int input = Helper.WhatNum(0, 2);
+
+            switch (input)
             {
-                Helper.Typing("", "원하시는 행동을 입력해주세요");
+                case 1:
+                    Console.Clear();
+                    //상태창
+                    break;
 
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write(">>  ");
-                Console.ResetColor();
+                case 2:
+                    Console.Clear();
+                    //전투 시작
+                    break;
 
-                int input = Helper.WhatNum(0, 2);
-
-                switch (input)
-                {
-                    case 1:
-                        Console.Clear();
-                        //상태창
-                        break;
-
-                    case 2:
-                        Console.Clear();
-                        //전투 시작
-                        break;
-
-                    case 0:
-                        Helper.Typing("Red", "게임을 종료합니다.");
-                        Thread.Sleep(1000);
-                        Environment.Exit(0);
-                        break;
-                }
+                case 0:
+                    Helper.Typing("Red", "게임을 종료합니다.");
+                    Thread.Sleep(1000);
+                    Environment.Exit(0);
+                    break;
             }
         }
     }
