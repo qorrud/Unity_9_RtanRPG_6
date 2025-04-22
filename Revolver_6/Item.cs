@@ -35,10 +35,15 @@ namespace Revolver_6
 
         public static class ItemDB
         {
-            public static Dictionary<int, ItemInfo> Items = new Dictionary<int, ItemInfo>() // 키값 1 = 무기, 2 = 방어구, 3 = 포션
+            public static Dictionary<int, ItemInfo> Items = new Dictionary<int, ItemInfo>() 
             {   
                 {1, new ItemInfo(ItemType.Weapon, "임시", 100)}
             };
+        }
+
+        public void AddItem()
+        {
+            
         }
     }
 }
