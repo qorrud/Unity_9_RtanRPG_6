@@ -1,6 +1,9 @@
-﻿namespace Revolver_6
+﻿using static Revolver_6.Helper;
+using static Revolver_6.Data;
+
+namespace Revolver_6
 {
-    internal class Battle
+    internal static class Battle
     {
 
         //    - 공격을 선택하면 몬스터 앞에 숫자가 표시됩니다.
@@ -18,28 +21,63 @@
         //    - 몬스터가 죽었다면 체력 대신 Dead 으로 표시됩니다.
         //    - 몬스터가 죽었다면 해당 몬스터에 텍스트는 전부 어두운 색으로 표시합니다.
         static bool Player_turn = true; //플레이어의 턴은 true 몬스터의 턴은 false로 할게요
-        int rage = 0; // 쓸 지는 모르겠지만 광폭화 스택입니다. 플레이어, 몬스터의 턴이 끝나면 1씩 증가하고 일정 수치 이상이 된다면 몬스터의 스탯이 뻥튀기 되는 거 넣어볼 생각인데 나중에..
+        //int rage = 0; // 쓸 지는 모르겠지만 광폭화 스택입니다. 플레이어, 몬스터의 턴이 끝나면 1씩 증가하고 일정 수치 이상이 된다면 몬스터의 스탯이 뻥튀기 되는 거 넣어볼 생각인데 나중에..
 
         internal static void My_Phase() //플레이어의 턴일때 실행되는 함수입니다. 플레이어의 턴이 끝나면  turn 은 false로 변경해서 적의 턴으로 넘어갑니다.
         {
             //Spawn_Random_Monster() 랜덤 몬스터 소환 로직 넣을껍니다.
-            Console.WriteLine("Battle!");
-            int monster_index = 1; //몬스터 출현시 붙일 번호입니다. 1번부터 선언
-            int Monster_Count = Monster.length //나중에 생성된 몬스터들이 배열이라면 배열의 길이로 몬스터 몇 마리인지 측정
-            for (int i = 0; i < Monster_Count; i++) //몬스터의 수 만큼 몬스터 정보를 출력합니다.
-            {
 
-                Console.WriteLine($"Lv.{Monster.Level} {Monster.name}  HP {Monter.HP}");
-            
+
+            Typing("Red","Battle!");
+            foreach (MonsterData.MonsterStat monster in MonsterData.MonsterList) // 몬스터 정보입니다.
+            {
+                monster.Display();
+
+
             }
 
             Console.WriteLine();
             Console.WriteLine();
-            Console.WriteLine($"[내정보]\nLv.{PlayerStats.}  {Profile.Name} ({Profile.Class})\nHP {Profile.MaxHP}/{Profile.NowHP}\n");
+            Typing("white", $"[내정보]\nLv.{Player.Level}  {Player.Level} ({Player.Level})\nHP {Player.MaxHp}/{Player.CurrentHP}\n");
             //플레이어의 정보 출력합니다.
 
-            Console.WriteLine("1. 공격\n원하시는 행동을 입력해주세요.\n>>");
+            //Profile.Player(); 
+
+
+            Typing("white", "1. 공격\n원하시는 행동을 입력해주세요.\n>>");
+            WhatNum(1, 1); //return 값은 index
+            Console.Clear();
+
+            // 공격 선택시
+            int monster_index = 1; //몬스터 출현시 붙일 번호입니다. 1번부터 선언
+
+            foreach (MonsterData.MonsterStat monster in MonsterData.MonsterList) // 몬스터 정보입니다.
+            {
+                Console.Write(monster_index); //몬스터 인덱스 출력 타이핑으로 쓰고싶은데 writeline으로 되어있어서 어케 해야할 지 모르겠어서 이렇게 씀
+                monster.Display();
+                monster_index++;
+
+            }
+
+            Typing("Black", $"대상을 선택해주세요. (1~{monster_index}\n>>");
+
+            int input = WhatNum(1, monster_index);
+            Console.Clear();
             
+            if ( input == monster_index)
+            {
+                Typing("Red", "Battle!\n");
+                //플레이어의 이름 의 공격!
+                TypingWrite("white", $"Lv{monster.Level}");
+                TypingWrite("white",$"{monster.Name}을(를) 맞췄습니다. [데미지 : "); //TypingWrite 함수 갱신되기 전에 사용
+                Random random_Attack = new Random(); //공격력은 10%의 오차
+                TypingWrite("\n")
+
+
+            }
+
+
+
 
         }
     }
