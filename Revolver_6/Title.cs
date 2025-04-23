@@ -33,24 +33,47 @@ namespace Revolver_6
 
         public ClassType ReadJob()
         {
-            JobInfo.Jobinfo();
-
             ClassType Job = ClassType.knight;
 
-            Helper.TypingWrite("yellow", "\n>> ");
             bool check = false;
+
             while (!check) 
             {
+                JobInfo.Jobinfo();
+
+                Helper.TypingWrite("yellow", "\n>> ");
                 int JobIndex = Helper.WhatNum(1,4);
-                Job = (ClassType)JobIndex;
+
+                switch (JobIndex)
+                {
+                    case 1: 
+                    Job = ClassType.knight; 
+                    break;
+
+                    case 2:
+                    Job = ClassType.archer; 
+                    break;
+                    case 3: 
+                    Job = ClassType.rogue; 
+                    break;
+
+                    case 4:
+                    Job = ClassType.magician; 
+                    break;
+                }
+
+
+                Helper.TypingWrite("yellow", "\n>> ");
+
                 Helper.Typing("", "선택하신 직업이 \'", "green", Job, "", "\' 맞습니까?");
                 string input = Helper.YesOrNo();
+
                 if (input == "y")
                 {
                     check = true;
                 }
 
-                if (input == "n");
+                if (input == "n") ;
             }
             return Job;
         }
