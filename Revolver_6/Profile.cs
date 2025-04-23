@@ -88,7 +88,6 @@ namespace Revolver_6
 
             }
 
-
             CurrentHP = MaxHp;
 
         }
