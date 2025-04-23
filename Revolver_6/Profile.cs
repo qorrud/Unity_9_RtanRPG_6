@@ -19,7 +19,10 @@ namespace Revolver_6
     {
         public static void Jobinfo()
         {
-            Helper.Typing("", "[1]", "",$"\t'[Knight]', 공격과 방어의 흠이없는 든든한 전위 직업");
+            Helper.Typing("", "[1]", "yellow", $"\t'[Knight]', 공격력은 약하지만 방어력과 체력이 높은 직업");
+            Helper.Typing("", "[2]", "green", $"\t'[Archer]', 공격력은 높지만 방어력과 체력이 낮은 직업");
+            Helper.Typing("", "[3]", "red", $"\t'[Rogue]', 공격력과 체력이 높지만 방어력이 낮고 돈이 많은 직업");
+            Helper.Typing("", "[4]", "bule", $"\t'[Magician]', 공격력이 매우 높지만 방어력과 체력이 매우 낮은 직업");
         }
     }
 
@@ -27,7 +30,7 @@ namespace Revolver_6
     {
         public static void PlayerStats()
         {
-            Helper.Typing("", $"Lv. {Player.Level}", 0);
+            Helper.Typing("", $"\nLv. {Player.Level}", 0);
             Helper.Typing("", $"Chad ({Player.Name})", 0);
             Helper.Typing("", $"공격력 : {Player.Power}", 0);
             Helper.Typing("", $"방어력 : {Player.Armor}", 0);
@@ -56,17 +59,31 @@ namespace Revolver_6
             switch (job)
             {
                 case ClassType.knight:
-                    MaxHp = 150;
                     Power = 10;
+                    Armor = 10;
+                    MaxHp = 150;
+                    Gold = 1500;
                     break;
 
                 case ClassType.archer:
+                    Power = 20;
+                    Armor = 5;
+                    MaxHp = 75;
+                    Gold = 1500;
                     break;
 
                 case ClassType.rogue:
+                    Power = 15;
+                    Armor = 5;
+                    MaxHp = 125;
+                    Gold = 3000;
                     break;
 
                 case ClassType.magician:
+                    Power = 30;
+                    Armor = 0;
+                    MaxHp = 50;
+                    Gold = 1500;
                     break;
 
             }

@@ -1,3 +1,5 @@
+using static Revolver_6.Data;
+
 namespace Revolver_6
 {
     internal class Title
@@ -14,12 +16,16 @@ namespace Revolver_6
             while (!check)
             {
                 Name = Console.ReadLine() ?? "Null";
+
                 Helper.Typing("", "선택하신 이름이 \'", "green", Name, "", "\' 맞습니까?");
+
                 string input = Helper.YesOrNo();
+
                 if (input == "y")
                 {
                     check = true;
                 }
+
                 if (input == "n") ;
             }
             return Name;
@@ -27,9 +33,11 @@ namespace Revolver_6
 
         public ClassType ReadJob()
         {
-            // 소개글 메서드 실행
+            JobInfo.Jobinfo();
 
             ClassType Job = ClassType.knight;
+
+            Helper.TypingWrite("yellow", "\n>> ");
             bool check = false;
             while (!check) 
             {
@@ -41,6 +49,7 @@ namespace Revolver_6
                 {
                     check = true;
                 }
+
                 if (input == "n");
             }
             return Job;
@@ -107,11 +116,13 @@ namespace Revolver_6
             {
                 case 1:
                     Console.Clear();
+                    //상태
                     GameProfile();
                     break;
 
                 case 2:
                     Console.Clear();
+                    //가방
                     GameInventory();
                     break;
 
@@ -142,6 +153,7 @@ namespace Revolver_6
 
                 case 7:
                     Helper.Typing("Red", "게임을 종료합니다.");
+                    //종료
                     Thread.Sleep(1000);
                     Environment.Exit(0);
                     break;
@@ -260,6 +272,34 @@ namespace Revolver_6
             {
                 case 1:
                     Battle.My_Phase();
+                    break;
+
+                case 2:
+                    Console.Clear();
+                    GameHome();
+                    break;
+            }
+        }
+
+        public void GameHotel()
+        {
+            Helper.Typing("yellow", "■■■\t여관\t■■■");
+
+            Helper.Typing("", "\n지친 플레이어의 체력을 회복시켜 줄 수 있는 공간입니다.");
+
+            Helper.Typing("", "\n1. 휴식", 0);
+            Helper.Typing("", "2. 돌아가기", 0);
+
+            Helper.Typing("", "\n원하시는 행동을 입력해주세요");
+
+            Helper.TypingWrite("yellow", "\n>> ");
+
+            int input = Helper.WhatNum(1, 2);
+
+            switch (input)
+            {
+                case 1:
+                    //휴식관리
                     break;
 
                 case 2:
