@@ -47,19 +47,19 @@ namespace Revolver_6
                 switch (JobIndex)
                 {
                     case 1: 
-                    Job = ClassType.knight; 
-                    break;
+                        Job = ClassType.knight; 
+                        break;
 
                     case 2:
-                    Job = ClassType.archer; 
-                    break;
+                        Job = ClassType.archer; 
+                        break;
                     case 3: 
-                    Job = ClassType.rogue; 
-                    break;
+                        Job = ClassType.rogue; 
+                        break;
 
                     case 4:
-                    Job = ClassType.magician; 
-                    break;
+                        Job = ClassType.magician; 
+                        break;
                 }
 
 
