@@ -45,8 +45,8 @@ namespace Revolver_6
                 {
                     Helper.TypingWrite("blue", i+1,0);
                     Helper.TypingWrite("", " Lv.",0);
-                    //Helper typing 미숙, 이따가 질문하기
-                    Helper.Typing("magenta", monster[i].Level, "", $" {monster[i].Name}  HP ", "magenta", "monster[i].HP / {monster[i].MaxHP}",0);
+                    Helper.Typing("magenta", monster[i].Level);
+                    Helper.Typing("", $" {monster[i].Name}  HP ", "magenta", $"{monster[i].HP} / {monster[i].MaxHP}",0);
                     Thread.Sleep(200);
                     // 몬스터의 체력이 0이 되면 Dead가 회색으로 출력되게끔
                     if(monster[i].HP <= 0)
