@@ -11,8 +11,10 @@ namespace Revolver_6
         none = 0,
         knight = 1,
         archer = 2,
-        rogue = 3,
-        magician = 4,
+        rogue = 4,
+        magician = 8,
+        all = 16,
+        // 0 1 2 4 8 16
     }
 
     public class JobInfo
