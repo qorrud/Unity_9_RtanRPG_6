@@ -4,24 +4,23 @@
     {
         static void Main(string[] args)
         {
-            GameManager game = new GameManager();
-            Title title = new Title();
+
 
             string PlayerName = "";
             ClassType PlayerJob = ClassType.knight;
             bool gameOver = false;
         
-            title.GameStart();
+            GameManager.Instance.title.GameStart();
             
-            PlayerName = title.ReadName();
-            PlayerJob = title.ReadJob();
+            PlayerName = GameManager.Instance.title.ReadName();
+            PlayerJob = GameManager.Instance.title.ReadJob();
 
-            game.NewPlayer(PlayerName, PlayerJob);
-            while (!gameOver) // 게임시작
+            GameManager.Instance.NewPlayer(PlayerName, PlayerJob);
+            while (!GameManager.Instance.gaemOver) // 게임시작
             {
                 
 
-                title.GameHome();
+                GameManager.Instance.TurnEnd();
                 //메인화면
                 //이름선택
                 //직업선택

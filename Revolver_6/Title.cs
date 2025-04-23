@@ -168,9 +168,7 @@ namespace Revolver_6
                 case 5:
                     Console.Clear();
                     // 여관
-                    Helper.Typing("", "아직 구현되지 않은 기능입니다.");
-                    Thread.Sleep(1000);
-                    GameHome();
+                    Inn.InnIntro();
                     break;
 
                 case 6:
@@ -301,7 +299,7 @@ namespace Revolver_6
             switch (input)
             {
                 case 1:
-                    monster = MonsterData.MonsterFactory.MonsterSpwan();
+                    monster = MonsterData.MonsterFactory.MonsterSpawn();
                     Battle.My_Phase();
                     break;
 

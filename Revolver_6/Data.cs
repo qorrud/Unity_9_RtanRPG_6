@@ -12,7 +12,7 @@ namespace Revolver_6
 
         public static MonsterData.MonsterStat[] monster;
         
-        public static List<Item.ItemInfo> Inventory = new List<Item.ItemInfo>();
+        public static List<ItemInfo> Inventory = new List<ItemInfo>();
 
         
     }

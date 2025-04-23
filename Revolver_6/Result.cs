@@ -35,9 +35,8 @@ namespace Revolver_6
                     Thread.Sleep(400);
 
                 }
-                Title title = new Title();
                 Console.Clear();
-                title.GameHome();
+                GameManager.Instance.TurnEnd();
 
             }
 

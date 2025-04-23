@@ -3,40 +3,45 @@ using static Revolver_6.Data;
 
 namespace Revolver_6
 {
-    internal class Utils
+    internal class ExtraEffect
     {
-        public class ExtraEffect
+        public static void UseEffect(string name, int value = 0)
         {
-            public void UseEffect(string name, int value = 0)
+            switch (name)
             {
-                switch (name)
-                {
-                    case "heal":
-                        Player.CurrentHP += value;
-                        if (Player.CurrentHP >= Player.MaxHp)
-                            Player.CurrentHP = Player.MaxHp;
-                        break;
+                case "heal":
+                    Player.CurrentHP += value;
+                    if (Player.CurrentHP >= Player.MaxHp)
+                        Player.CurrentHP = Player.MaxHp;
 
-                    case "heal%":
-                        float healValue = Player.MaxHp * value / 100f;
-                        Player.CurrentHP += (int)healValue;
-                        if (Player.CurrentHP >= Player.MaxHp)
-                            Player.CurrentHP = Player.MaxHp;
-                        break;
 
-                    case "":
-                        break;
+                    break;
 
-                }
+                case "heal%":
+                    float healValue = Player.MaxHp * value / 100f;
+                    Player.CurrentHP += (int)healValue;
+                    if (Player.CurrentHP >= Player.MaxHp)
+                    {
+                        Player.CurrentHP = Player.MaxHp;
+                        Helper.Typing("green", "체력이 ", "", "가득찼다! \n현재 체력 : ","", Player.CurrentHP);
+                    }
+
+                    Helper.Typing("","현재 체력 : ","", Player.CurrentHP);
+                    Console.ReadLine();
+                    break;
+
+                case "":
+                    break;
+
             }
         }
+    }
 
-        public class ItemManager
+    public class ItemManager
+    {
+        public void AddItem(int key)
         {
-            public void AddItem(int key)
-            {
-                Inventory.Add(Item.ItemDB.Items[key]);
-            }
+            Inventory.Add(ItemDB.Items[key]);
         }
     }
 }
