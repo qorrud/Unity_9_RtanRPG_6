@@ -254,9 +254,9 @@ namespace Revolver_6
 
         internal static void Rage() //rage가 5이상 부터 몬스터 공격력 체력 2배로 증가
         {
-            if (rage >= 5)
+            if (rage >= 2)
             {
-                for (int i = 0; monster.Length > 0; i++)
+                for (int i = 0; monster.Length > i; i++)
                 {
                     monster[i].Attack *= 2;
                     monster[i].HP *= 2;
