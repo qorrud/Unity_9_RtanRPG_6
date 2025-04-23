@@ -27,7 +27,7 @@ namespace Revolver_6
                 Index = 0;
 
             }
-            public MonsterStat(string name, int level,int max_hp, int hp, int attack, int gold, int exp, int index) //MonsterStat 객체를 만들 때 필요한 생성자
+            public MonsterStat(string name, int level, int max_hp, int hp, int attack, int gold, int exp, int index) //MonsterStat 객체를 만들 때 필요한 생성자
             {                                                                                  //그 객체를 만들 때 안에 들어갈 값을 한 번에 설정하기 위함
                 Name = name;                                                                    // 이 생성자가 없다면 32번째줄에 코드가 하나씩 입력해야해서 길어짐
                 Level = level;
@@ -39,28 +39,63 @@ namespace Revolver_6
                 Index = index;
             }
 
+//  public static void Display(MonsterStat[] monster)
+//             {
+//                 for (int i = 0; i < monster.Length; i++)
+//                 {
+//                     Helper.TypingWrite("blue", i+1,0);
+//                     Helper.TypingWrite("", " Lv.",0);
+//                     Helper.Typing("magenta", monster[i].Level);
+//                     if(monster[i].HP > 0)
+//                     {
+//                     Helper.Typing("",$" {monster[i].Name}  HP ");
+//                     Helper.Typing("magenta", $"{monster[i].HP} / {monster[i].MaxHP}",0);
+//                     Thread.Sleep(200);
+//                     }
+//                     // 몬스터의 체력이 0이 되면 Dead가 회색으로 출력되게끔
+//                     if(monster[i].HP <= 0)
+//                     {
+//                         Helper.Typing("magenta", monster[i].Level, "", $" {monster[i].Name}  ", "gray", "Dead",0);
+//                         Thread.Sleep(200);
+//                         Console.Clear();
+//                     }
+//                 }
+//             }
+
+
+
             public static void Display(MonsterStat[] monster)
             {
                 for (int i = 0; i < monster.Length; i++)
                 {
-                    Helper.TypingWrite("blue", i+1,0);
-                    Helper.TypingWrite("", " Lv.",0);
-                    Helper.Typing("magenta", monster[i].Level);
-                    Helper.Typing("", $" {monster[i].Name}  HP ", "magenta", $"{monster[i].HP} / {monster[i].MaxHP}",0);
-                    Thread.Sleep(200);
-                    // 몬스터의 체력이 0이 되면 Dead가 회색으로 출력되게끔
-                    if(monster[i].HP <= 0)
+                    Helper.TypingWrite("blue", i + 1, 0); // 몬스터 번호
+                    Helper.TypingWrite("", " Lv.", 0);
+                    Helper.TypingWrite("magenta", monster[i].Level, 0);
+                    Helper.TypingWrite("", $" {monster[i].Name}  ", 0);
+
+                    if (monster[i].HP > 0)
                     {
-                        Helper.Typing("magenta", monster[i].Level, "", $" {monster[i].Name}  ", "gray", "Dead",0);
+                        Helper.TypingWrite("", "HP ", 0);
+                        Helper.TypingWrite("magenta", $"{monster[i].HP} / {monster[i].MaxHP}", 0);
                     }
+                    else
+                    {
+                        Helper.TypingWrite("gray", "Dead", 0);
+                    }
+
+                    Console.Write("     "); // 몬스터 간 간격 넣기
                 }
+
+                Console.WriteLine(); 
+                Thread.Sleep(100);   
             }
+
         }
 
         public static Dictionary<int, MonsterStat> MonsterList = new Dictionary<int, MonsterStat>()
         {                  //           name,      lv, maxhp, hp, atk, gold, exp, index
-            {1, new MonsterData.MonsterStat( "미니언"   , 2, 6, 15, 15, 0, 0, 1)},
-            {2, new MonsterData.MonsterStat("대포 미니언", 5, 15, 25, 25, 0, 0, 2)},
+            {1, new MonsterData.MonsterStat( "미니언"   , 2, 6, 6, 15, 0, 0, 1)},
+            {2, new MonsterData.MonsterStat("대포 미니언", 5, 15, 15, 25, 0, 0, 2)},
             {3, new MonsterData.MonsterStat("공허충"    , 3, 10, 10, 10, 0, 0, 3)},
             {4, new MonsterData.MonsterStat("공허의 전령", 8, 20, 20, 20, 0, 0, 4)},
         };
