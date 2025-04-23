@@ -19,14 +19,15 @@
             game.NewPlayer(PlayerName, PlayerJob);
             while (!gameOver) // 게임시작
             {
+                game.NewMonster();
+
                 title.GameHome();
                 //메인화면
                 //이름선택
                 //직업선택
-                game.NewMonster();
-                MonsterData.MonsterStat.Display(Data.monster);
-                Console.ReadLine();
-               // Battle.My_Phase();
+                
+                
+                
             }
         }
     }
