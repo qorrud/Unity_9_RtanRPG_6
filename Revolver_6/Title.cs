@@ -101,8 +101,9 @@ namespace Revolver_6
             Helper.Typing("", "2. 가방 보기", 0);
             Helper.Typing("", "3. 임무 보기", 0);
             Helper.Typing("", "4. 전투 하기", 0);
-            Helper.Typing("", "5. 저장 하기", 0);
-            Helper.Typing("", "6. 게임 종료", 0);
+            Helper.Typing("", "5. 여관 가기", 0);
+            Helper.Typing("", "6. 저장 하기", 0);
+            Helper.Typing("", "7. 게임 종료", 0);
 
 
 
@@ -110,7 +111,7 @@ namespace Revolver_6
 
             Helper.TypingWrite("yellow", "\n>> ");
 
-            int input = Helper.WhatNum(1, 6);
+            int input = Helper.WhatNum(1, 7);
 
             switch (input) //1상태, [2가방], [3임무], 4전투, [5여관] ,[6저장], 7종료
             {
@@ -141,6 +142,9 @@ namespace Revolver_6
                 case 5:
                     Console.Clear();
                     // 여관
+                    Helper.Typing("", "아직 구현되지 않은 기능입니다.");
+                    Thread.Sleep(1000);
+                    GameHome();
                     break;
 
                 case 6:
@@ -271,6 +275,7 @@ namespace Revolver_6
             switch (input)
             {
                 case 1:
+                    monster = MonsterData.MonsterFactory.MonsterSpwan();
                     Battle.My_Phase();
                     break;
 
