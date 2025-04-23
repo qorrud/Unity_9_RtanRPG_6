@@ -39,39 +39,14 @@ namespace Revolver_6
                 Index = index;
             }
 
-//  public static void Display(MonsterStat[] monster)
-//             {
-//                 for (int i = 0; i < monster.Length; i++)
-//                 {
-//                     Helper.TypingWrite("blue", i+1,0);
-//                     Helper.TypingWrite("", " Lv.",0);
-//                     Helper.Typing("magenta", monster[i].Level);
-//                     if(monster[i].HP > 0)
-//                     {
-//                     Helper.Typing("",$" {monster[i].Name}  HP ");
-//                     Helper.Typing("magenta", $"{monster[i].HP} / {monster[i].MaxHP}",0);
-//                     Thread.Sleep(200);
-//                     }
-//                     // 몬스터의 체력이 0이 되면 Dead가 회색으로 출력되게끔
-//                     if(monster[i].HP <= 0)
-//                     {
-//                         Helper.Typing("magenta", monster[i].Level, "", $" {monster[i].Name}  ", "gray", "Dead",0);
-//                         Thread.Sleep(200);
-//                         Console.Clear();
-//                     }
-//                 }
-//             }
-
-
-
             public static void Display(MonsterStat[] monster)
             {
                 for (int i = 0; i < monster.Length; i++)
                 {
-                    Helper.TypingWrite("blue", i + 1, 0); // 몬스터 번호
-                    Helper.TypingWrite("", " Lv.", 0);
-                    Helper.TypingWrite("magenta", monster[i].Level, 0);
-                    Helper.TypingWrite("", $" {monster[i].Name}  ", 0);
+                    Helper.TypingWrite("blue", $"{i + 1} ", 0);
+                    Helper.TypingWrite("", "Lv. ", 0);
+                    Helper.TypingWrite("magenta", $"{monster[i].Level} ", 0);
+                    Helper.TypingWrite("", $"{monster[i].Name}  ", 0);
 
                     if (monster[i].HP > 0)
                     {
@@ -83,12 +58,11 @@ namespace Revolver_6
                         Helper.TypingWrite("gray", "Dead", 0);
                     }
 
-                    Console.Write("     "); // 몬스터 간 간격 넣기
+                    Console.WriteLine(); // 줄바꿈
+                    Thread.Sleep(150);
                 }
-
-                Console.WriteLine(); 
-                Thread.Sleep(100);   
             }
+
 
         }
 
