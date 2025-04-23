@@ -19,7 +19,7 @@
             game.NewPlayer(PlayerName, PlayerJob);
             while (!gameOver) // 게임시작
             {
-                game.NewMonster();
+                
 
                 title.GameHome();
                 //메인화면

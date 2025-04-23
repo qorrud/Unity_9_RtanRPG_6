@@ -17,7 +17,7 @@ namespace Revolver_6
         public static void TypingWrite(string color, object input, int speed = 50) // 줄바꿈 x
         {
             SelectColor(color);
-            string text = input.ToString();
+            string text = input.ToString() ?? "null";
             foreach (char c in text)
             {
                 Console.Write(c);
@@ -28,7 +28,7 @@ namespace Revolver_6
         public static void Typing(string color1, object input1, int speed = 50)
         {
             SelectColor(color1);
-            string text1 = input1.ToString();
+            string text1 = input1.ToString() ?? "null";
             foreach (char c in text1)
             {
                 Console.Write(c);
@@ -41,7 +41,7 @@ namespace Revolver_6
         public static void Typing(string color1, object input1, string color2, object input2, int speed = 50)
         {
             SelectColor(color1);
-            string text1 = input1.ToString();
+            string text1 = input1.ToString() ?? "null";
             foreach (char c in text1)
             {
                 Console.Write(c);
@@ -49,7 +49,7 @@ namespace Revolver_6
             }
 
             SelectColor(color2);
-            string text2 = input2.ToString();
+            string text2 = input2.ToString() ?? "null";
             foreach (char c in text2)
             {
                 Console.Write(c);
@@ -63,21 +63,21 @@ namespace Revolver_6
          object input2, string color3, object input3, int speed = 50)
         {
             SelectColor(color1);
-            string text1 = input1.ToString();
+            string text1 = input1.ToString() ?? "null";
             foreach (char c in text1)
             {
                 Console.Write(c);
                 Thread.Sleep(speed);
             }
             SelectColor(color2);
-            string text2 = input2.ToString();
+            string text2 = input2.ToString() ?? "null";
             foreach (char c in text2)
             {
                 Console.Write(c);
                 Thread.Sleep(speed);
             }
             SelectColor(color3);
-            string text3 = input3.ToString();
+            string text3 = input3.ToString() ?? "null";
             foreach (char c in text3)
             {
                 Console.Write(c);
@@ -96,7 +96,7 @@ namespace Revolver_6
             while (true)
             {
                 Typing("", "(Y/N) 입력 : ");
-                string input = Console.ReadLine().ToLower();
+                string input = Console.ReadLine() ?? "null".ToLower();
                 Console.WriteLine();
 
                 if (input == "y")
@@ -124,7 +124,7 @@ namespace Revolver_6
             int index = -1;
             while (true)
             {
-                string input = Console.ReadLine();
+                string input = Console.ReadLine() ?? "null";
                 bool isNum = int.TryParse(input, out index);
 
                 if (a <= index && index <= b)
