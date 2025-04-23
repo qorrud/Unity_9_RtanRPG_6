@@ -259,6 +259,7 @@ namespace Revolver_6
             switch (input)
             {
                 case 1:
+                    Battle.My_Phase();
                     break;
 
                 case 2:
