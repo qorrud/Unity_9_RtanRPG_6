@@ -11,10 +11,7 @@ namespace Revolver_6
             public int HP { get; set; }
             public int Gold { get; set; }
             public int Exp { get; set; }
-
             public int Index { get; set; }
-
-
             public MonsterStat()
             {
                 Name = "오류";
@@ -25,7 +22,6 @@ namespace Revolver_6
                 Gold = 0;
                 Exp = 0;
                 Index = 0;
-
             }
             public MonsterStat(string name, int level, int max_hp, int hp, int attack, int gold, int exp, int index) //MonsterStat 객체를 만들 때 필요한 생성자
             {                                                                                  //그 객체를 만들 때 안에 들어갈 값을 한 번에 설정하기 위함
@@ -38,7 +34,6 @@ namespace Revolver_6
                 Exp = exp;
                 Index = index;
             }
-
             public static void Display(MonsterStat[] monster)
             {
                 for (int i = 0; i < monster.Length; i++)
@@ -47,7 +42,6 @@ namespace Revolver_6
                     Helper.TypingWrite("", "Lv. ", 0);
                     Helper.TypingWrite("magenta", $"{monster[i].Level} ", 0);
                     Helper.TypingWrite("", $"{monster[i].Name}  ", 0);
-
                     if (monster[i].HP > 0)
                     {
                         Helper.TypingWrite("", "HP ", 0);
@@ -57,7 +51,6 @@ namespace Revolver_6
                     {
                         Helper.TypingWrite("gray", "Dead", 0);
                     }
-
                     Console.WriteLine(); // 줄바꿈
                     Thread.Sleep(150);
                 }
@@ -65,7 +58,6 @@ namespace Revolver_6
 
 
         }
-
         public static Dictionary<int, MonsterStat> MonsterList = new Dictionary<int, MonsterStat>()
         {                  //           name,      lv, maxhp, hp, atk, gold, exp, index
             {1, new MonsterData.MonsterStat( "미니언"   , 2, 6, 6, 15, 0, 0, 1)},
@@ -75,7 +67,6 @@ namespace Revolver_6
         };
         public class MonsterFactory
         {
-
             public static int[] RandomSpawn()
             {
                 Random random = new Random();
@@ -86,7 +77,7 @@ namespace Revolver_6
                 }
                 return MonsterNumber;
             }
-            public static MonsterStat[] MonsterSpwan()
+            public static MonsterStat[] MonsterSpawn()
             {
                 int[] a = RandomSpawn();
                 MonsterStat[] Dummy = new MonsterStat[a.Length];

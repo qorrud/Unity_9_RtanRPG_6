@@ -4,6 +4,22 @@ namespace Revolver_6
 {
     internal class GameManager
     {
+        public Title title = new Title();
+        private static GameManager instance;
+
+        public static GameManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new GameManager();
+                return instance;
+            }
+        }
+
+        private GameManager(){}
+
+        
         public void NewPlayer(string name, ClassType Job) // 플레이어 객체를을 초기화 하는 함수
         {
             Player = new PlayerInfo(name, Job);
@@ -11,15 +27,22 @@ namespace Revolver_6
 
         public void NewMonster() // 몬스터 객체를 초기화 하는 함수
         {           
-            monster = MonsterData.MonsterFactory.MonsterSpwan();
+            monster = MonsterData.MonsterFactory.MonsterSpawn();
         }
 
         public void NewInventory() // 인벤토리 객체를 초기화 하는 함수
         {
-            Inventory = new List<Item.ItemInfo>();
+            Inventory = new List<ItemInfo>();
         }
 
+        public void TurnEnd()
+        {
+            Turn++;
+            Helper.Typing("", "다음날이 되었습니다.\n현재 : ", "yellow", Turn, "","일");
+            title.GameHome();
+        }
 
-
+        private int Turn = 1;
+        public bool gaemOver = false;
     }
 }
