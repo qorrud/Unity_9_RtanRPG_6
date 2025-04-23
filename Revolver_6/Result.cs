@@ -7,6 +7,7 @@ namespace Revolver_6
     {
 
         
+        internal static void Player_Turn_End(bool Player_turn, int Monster_count)
         {
             
             if (!Player_turn && Monster_count != 0)  //몬스터가 살아있을때만 몬스터 페이즈로 넘어갑니다.
