@@ -33,6 +33,9 @@ namespace Revolver_6
 
         public ClassType ReadJob()
         {
+            Console.Clear();
+            Helper.Typing("yellow", "■■■\t직업 선택\t■■■");
+
             ClassType Job = ClassType.knight;
 
             bool check = false;
@@ -118,7 +121,7 @@ namespace Revolver_6
         {
             Console.Clear();
             Helper.Typing("", "스파르타 던전에 오신 여러분 환영합니다.");
-            Helper.Typing("", "이제 전투를 시작할 수 있습니다");
+            Helper.Typing("", "이제 전투를 시작할 수 있습니다", 0);
 
             Helper.Typing("", "\n1. 상태 보기", 0);
             Helper.Typing("", "2. 가방 보기", 0);

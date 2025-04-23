@@ -21,7 +21,7 @@ namespace Revolver_6
     {
         public static void Jobinfo()
         {
-            Helper.Typing("", "[1]", "yellow", $"\t[Knight], 공격력은 약하지만 방어력과 체력이 높은 직업");
+            Helper.Typing("", "\n[1]", "yellow", $"\t[Knight], 공격력은 약하지만 방어력과 체력이 높은 직업");
             Helper.Typing("", "[2]", "green", $"\t[Archer], 공격력은 높지만 방어력과 체력이 낮은 직업", 0);
             Helper.Typing("", "[3]", "red", $"\t[Rogue], 공격력과 체력이 높지만 방어력이 낮고 돈이 많은 직업", 0);
             Helper.Typing("", "[4]", "blue", $"\t[Magician], 공격력이 매우 높지만 방어력과 체력이 매우 낮은 직업");
