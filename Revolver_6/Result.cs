@@ -25,7 +25,7 @@ namespace Revolver_6
                 Typing("red", "0.", "white", " 다음");
 
                 WhatNum(0, 0);
-
+                int value = ExtraEffect.MonsterValue();
 
                 //마을로 돌아가는 로직
                 Typing("white", "던전 클리어!\n 마을로 귀환합니다");
@@ -35,9 +35,8 @@ namespace Revolver_6
                     Thread.Sleep(400);
 
                 }
-                Title title = new Title();
                 Console.Clear();
-                title.GameHome();
+                GameManager.Instance.TurnEnd();
 
             }
 

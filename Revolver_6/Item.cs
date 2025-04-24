@@ -1,35 +1,37 @@
 namespace Revolver_6
 {
-    internal class Item
+    public class ItemInfo
     {
-        public class ItemInfo
+        public ClassType Type { get; protected set; } // 무기를 쓸 수 있는 직업
+        public string Name { get; protected set; } 
+        public int Cost { get; protected set; }
+        public bool Eq { get; protected set; }
+        public ItemInfo()
         {
-            public ClassType Type;
-            public string Name;
-            public int Cost;
-            public bool Eq;
-            public ItemInfo()
-            {
-                Type = ClassType.knight;
-                Name = "공백";
-                Cost = -1;
-                Eq = false;
-            }
-            public ItemInfo(ClassType type, string name, int cost)
-            {
-                Type = type;
-                Name = name;
-                Cost = cost;
-                Eq = false;
-            }
+            Type = ClassType.knight;
+            Name = "공백";
+            Cost = -1;
+            Eq = false;
         }
+        public ItemInfo(ClassType type, string name, int cost)
+        {
+            Type = type;
+            Name = name;
+            Cost = cost;
+            Eq = false;
+        }
+        public virtual void ShowItem()
+        {
 
-        public static class ItemDB
-        {
-            public static Dictionary<int, ItemInfo> Items = new Dictionary<int, ItemInfo>() 
-            {   
-                {1, new Equipment.WeaponInfo(ClassType.knight, "기본검", 15, 200)},
-            };
         }
+    }
+
+    public static class ItemDB
+    {
+        public static Dictionary<int, ItemInfo> Items = new Dictionary<int, ItemInfo>()
+        {
+            {1, new WeaponInfo(ClassType.knight, "기본검", 15, 200)},
+            {101, new ProtecterInfo(ClassType.knight, "천갑옷", 50, 5, 200)},
+        };
     }
 }
