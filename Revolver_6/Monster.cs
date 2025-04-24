@@ -62,13 +62,27 @@ namespace Revolver_6
             {2, new MonsterData.MonsterStat("대포 미니언", 5, 15, 15, 25, 0, 0, 2)},
             {3, new MonsterData.MonsterStat("공허충"    , 3, 10, 10, 10, 0, 0, 3)},
             {4, new MonsterData.MonsterStat("공허의 전령", 8, 20, 20, 20, 0, 0, 4)},
+            {5, new MonsterData.MonsterStat( "미니언"   , 2, 6, 6, 15, 0, 0, 1)},
+            {6, new MonsterData.MonsterStat("대포 미니언", 5, 15, 15, 25, 0, 0, 2)},
+            {7, new MonsterData.MonsterStat("공허충"    , 3, 10, 10, 10, 0, 0, 3)},
+            {8, new MonsterData.MonsterStat("공허의 전령", 8, 20, 20, 20, 0, 0, 4)},
         };
         public class MonsterFactory
         {
             public static int[] RandomSpawn()
             {
                 Random random = new Random();
-                int[] MonsterNumber = new int[random.Next(1, 5)];
+                int num1 = GameManager.Instance.Difficulty / 3;
+                int num2 = 0;
+                switch (num1)
+                {
+                    case 0:
+                        num2 = random.Next(1,5);
+                        break;
+
+                }
+
+                int[] MonsterNumber = new int[num2];
                 for (int i = 0; i < MonsterNumber.Length; i++)
                 {
                     MonsterNumber[i] = random.Next(1, 5);
@@ -84,7 +98,7 @@ namespace Revolver_6
                     Dummy[i] = new MonsterStat();
                     Dummy[i].Name = MonsterList[a[i]].Name;
                     Dummy[i].Level = MonsterList[a[i]].Level;
-                    Dummy[i].Attack = MonsterList[a[i]].Attack;
+                    Dummy[i].Attack = MonsterList[a[i]].Attack + GameManager.Instance.Difficulty;
                     Dummy[i].MaxHP = MonsterList[a[i]].MaxHP;
                     Dummy[i].HP = MonsterList[a[i]].HP;
                     Dummy[i].Gold = MonsterList[a[i]].Gold;

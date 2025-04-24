@@ -2,10 +2,10 @@ namespace Revolver_6
 {
     public class ItemInfo
     {
-        protected ClassType Type;
-        protected string Name;
-        protected int Cost;
-        protected bool Eq;
+        public ClassType Type { get; protected set; } // 무기를 쓸 수 있는 직업
+        public string Name { get; protected set; } 
+        public int Cost { get; protected set; }
+        public bool Eq { get; protected set; }
         public ItemInfo()
         {
             Type = ClassType.knight;
@@ -22,7 +22,7 @@ namespace Revolver_6
         }
         public virtual void ShowItem()
         {
-            
+
         }
     }
 
