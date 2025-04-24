@@ -37,12 +37,12 @@ namespace Revolver_6
 
         public void TurnEnd()
         {
-            Turn++;
-            Helper.Typing("", "다음날이 되었습니다.\n현재 : ", "yellow", Turn, "","일");
+            Difficulty = 0;
+            Helper.Typing("", "다음날이 되었습니다.\n현재 난이도 : ", "yellow", Difficulty);
             title.GameHome();
         }
 
-        private int Turn = 1;
+        public int Difficulty = 1;
         public bool gaemOver = false;
     }
 }
