@@ -128,6 +128,7 @@ namespace Revolver_6
             Helper.Typing("", "3. 임무 보기", 0);
             Helper.Typing("", "4. 전투 하기", 0);
             Helper.Typing("", "5. 여관 가기", 0);
+            Helper.Typing("", "6. 상점 가기", 0);
             Helper.Typing("", "6. 저장 하기", 0);
             Helper.Typing("", "7. 게임 종료", 0);
 
@@ -137,9 +138,9 @@ namespace Revolver_6
 
             Helper.TypingWrite("yellow", "\n>> ");
 
-            int input = Helper.WhatNum(1, 7);
+            int input = Helper.WhatNum(1, 8);
 
-            switch (input) //1상태, [2가방], [3임무], 4전투, [5여관] ,[6저장], 7종료
+            switch (input) //1상태, [2가방], [3임무], 4전투, [5여관], [6상점] ,[7저장], 8종료
             {
                 case 1:
                     Console.Clear();
@@ -172,6 +173,10 @@ namespace Revolver_6
                     break;
 
                 case 6:
+                    Shop.ShowShop(GameManager.Instance.DummyInt1, GameManager.Instance.DummyInt2, GameManager.Instance.DummyInt3);
+                    break;
+
+                case 7:
                     Console.Clear();
                     //저장
                     Helper.Typing("", "아직 구현되지 않은 기능입니다.");
@@ -179,7 +184,7 @@ namespace Revolver_6
                     GameHome(); // 세이브 기능 만들면 추가
                     break;
 
-                case 7:
+                case 8:
                     Helper.Typing("Red", "게임을 종료합니다.");
                     //종료
                     Thread.Sleep(1000);
