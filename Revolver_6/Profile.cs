@@ -32,7 +32,9 @@ namespace Revolver_6
             Helper.Typing("", $"Chad ({Player.Name})", 0);
             Helper.Typing("", $"공격력 : {Player.Power}", 0);
             Helper.Typing("", $"방어력 : {Player.Armor}", 0);
-            Helper.Typing("", $"체 력 : {Player.CurrentHP}", 0);
+            Helper.Typing("", $"체 력 : {Player.MaxHp}/{Player.CurrentHP}", 0);
+            Helper.Typing("", $"마 나 : {Player.MaxMp}/{Player.CurrentMP}", 0);
+
             Helper.Typing("", $"Gold :  {Player.Gold} G", 0);
         }
     }
@@ -44,7 +46,9 @@ namespace Revolver_6
         public int Power { get; set; } = 0;
         public int Armor { get ; set; } = 0;
         public int CurrentHP = 1;
+        public int CurrentMP = 1;
         public int MaxHp { get; set; } = 100;
+        public int MaxMp { get; set; } = 100;
         public int Gold { get; set; } = 1500;
         public int Exp {get; set; } = 0;
         public PlayerInfo(string name, ClassType job)
@@ -58,28 +62,33 @@ namespace Revolver_6
                     Power = 10;
                     Armor = 10;
                     MaxHp = 150;
+                    MaxMp = 50;
                     Gold = 1500;
                     break;
                 case ClassType.archer:
                     Power = 20;
                     Armor = 5;
                     MaxHp = 75;
+                    MaxMp = 50;
                     Gold = 1500;
                     break;
                 case ClassType.rogue:
                     Power = 15;
                     Armor = 5;
                     MaxHp = 125;
+                    MaxMp = 50;
                     Gold = 3000;
                     break;
                 case ClassType.magician:
                     Power = 30;
                     Armor = 0;
                     MaxHp = 50;
+                    MaxMp = 50;
                     Gold = 1500;
                     break;
             }
             CurrentHP = MaxHp;
+            CurrentMP = MaxMp;
         }
     }
 }
