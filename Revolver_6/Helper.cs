@@ -96,7 +96,7 @@ namespace Revolver_6
             while (true)
             {
                 Typing("", "(Y/N) 입력 : ");
-                string input = Console.ReadLine() ?? "null".ToLower();
+                string input = Console.ReadLine().ToLower();
                 Console.WriteLine();
 
                 if (input == "y")

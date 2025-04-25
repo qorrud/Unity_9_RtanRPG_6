@@ -56,24 +56,56 @@ namespace Revolver_6
                 }
             }
 
-
         }
         public static Dictionary<int, MonsterStat> MonsterList = new Dictionary<int, MonsterStat>()
-        {                  //           name,      lv, maxhp, hp, atk, gold, exp, index
-            {1, new MonsterData.MonsterStat( "미니언"   , 2, 6, 6, 15, 0, 0, 1)},
-            {2, new MonsterData.MonsterStat("대포 미니언", 5, 15, 15, 25, 0, 0, 2)},
-            {3, new MonsterData.MonsterStat("공허충"    , 3, 10, 10, 10, 0, 0, 3)},
-            {4, new MonsterData.MonsterStat("공허의 전령", 8, 20, 20, 20, 0, 0, 4)},
+        {                  //                name,      lv, maxhp, hp, atk, gold, exp, index
+            {1, new MonsterData.MonsterStat("미니언"     , 2, 6, 6, 8, 10, 5, 1)},
+            {2, new MonsterData.MonsterStat("대포 미니언" , 4, 12, 12, 10, 20, 10, 2)},
+            {3, new MonsterData.MonsterStat("공허충"     , 5, 10, 10, 12, 30, 15, 3)},
+            {4, new MonsterData.MonsterStat("어스름 늑대" , 7, 20, 20, 20, 40, 20, 4)},
+            {5, new MonsterData.MonsterStat("칼날부리"    , 7, 20, 20, 20, 40, 20, 5)},
+            {6, new MonsterData.MonsterStat("심술 두꺼비" , 8, 25, 25, 25, 60, 30, 6)},
+            {7, new MonsterData.MonsterStat("공허의 전령" , 9, 30, 30, 30, 70, 40, 7)},
+            {8, new MonsterData.MonsterStat("바론 남작"   , 10, 35, 35, 40, 80, 50, 8)},
         };
         public class MonsterFactory
         {
             public static int[] RandomSpawn()
             {
                 Random random = new Random();
-                int[] MonsterNumber = new int[random.Next(1, 5)];
+
+                int monsterCount = random.Next(1,5);
+
+                int stage = GameManager.Instance.Difficulty / 3;
+    
+                int[] MonsterNumber = new int[monsterCount];
                 for (int i = 0; i < MonsterNumber.Length; i++)
                 {
-                    MonsterNumber[i] = random.Next(1, 5);
+                    switch(stage)
+                    {
+                        case 0:
+                         MonsterNumber[i] = random.Next(1, 3);
+                         break;
+                          case 1:
+                         MonsterNumber[i] = random.Next(1, 5);
+                         break;
+                          case 2:
+                         MonsterNumber[i] = random.Next(1, 7);
+                         break;
+                          case 3:
+                         MonsterNumber[i] = random.Next(3, 7);
+                         break;
+                          case 4:
+                         MonsterNumber[i] = random.Next(4, 7);
+                         break;
+                          case 5:
+                         MonsterNumber[i] = random.Next(4, 8);
+                         break;
+                          case 6:
+                         MonsterNumber[i] = random.Next(5, 8);
+                         break;
+                    }
+                   
                 }
                 return MonsterNumber;
             }
@@ -86,11 +118,11 @@ namespace Revolver_6
                     Dummy[i] = new MonsterStat();
                     Dummy[i].Name = MonsterList[a[i]].Name;
                     Dummy[i].Level = MonsterList[a[i]].Level;
-                    Dummy[i].Attack = MonsterList[a[i]].Attack;
-                    Dummy[i].MaxHP = MonsterList[a[i]].MaxHP;
-                    Dummy[i].HP = MonsterList[a[i]].HP;
-                    Dummy[i].Gold = MonsterList[a[i]].Gold;
-                    Dummy[i].Exp = MonsterList[a[i]].Exp;
+                    Dummy[i].Attack = MonsterList[a[i]].Attack + (GameManager.Instance.Difficulty % 3);
+                    Dummy[i].MaxHP = MonsterList[a[i]].MaxHP + 2 * (GameManager.Instance.Difficulty % 3);
+                    Dummy[i].HP = MonsterList[a[i]].HP + 2 * (GameManager.Instance.Difficulty % 3);
+                    Dummy[i].Gold = MonsterList[a[i]].Gold + (GameManager.Instance.Difficulty % 3);
+                    Dummy[i].Exp = MonsterList[a[i]].Exp + (GameManager.Instance.Difficulty % 3);
                     Dummy[i].Index = MonsterList[a[i]].Index;
                 }
                 return Dummy;

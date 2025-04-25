@@ -26,7 +26,7 @@ namespace Revolver_6
                     check = true;
                 }
 
-                if (input == "n") ;
+                if (input == "n") { }
             }
             return Name;
         }
@@ -76,7 +76,7 @@ namespace Revolver_6
                     check = true;
                 }
 
-                if (input == "n") ;
+                if (input == "n") { }
             }
             return Job;
         }
@@ -128,8 +128,9 @@ namespace Revolver_6
             Helper.Typing("", "3. 임무 보기", 0);
             Helper.Typing("", "4. 전투 하기", 0);
             Helper.Typing("", "5. 여관 가기", 0);
-            Helper.Typing("", "6. 저장 하기", 0);
-            Helper.Typing("", "7. 게임 종료", 0);
+            Helper.Typing("", "6. 상점 가기", 0);
+            Helper.Typing("", "7. 저장 하기", 0);
+            Helper.Typing("", "8. 게임 종료", 0);
 
 
 
@@ -137,9 +138,9 @@ namespace Revolver_6
 
             Helper.TypingWrite("yellow", "\n>> ");
 
-            int input = Helper.WhatNum(1, 7);
+            int input = Helper.WhatNum(1, 8);
 
-            switch (input) //1상태, [2가방], [3임무], 4전투, [5여관] ,[6저장], 7종료
+            switch (input) //1상태, [2가방], [3임무], 4전투, [5여관], [6상점] ,[7저장], 8종료
             {
                 case 1:
                     Console.Clear();
@@ -172,6 +173,10 @@ namespace Revolver_6
                     break;
 
                 case 6:
+                    Shop.ShowShop(GameManager.Instance.DummyInt1, GameManager.Instance.DummyInt2, GameManager.Instance.DummyInt3);
+                    break;
+
+                case 7:
                     Console.Clear();
                     //저장
                     Helper.Typing("", "아직 구현되지 않은 기능입니다.");
@@ -179,7 +184,7 @@ namespace Revolver_6
                     GameHome(); // 세이브 기능 만들면 추가
                     break;
 
-                case 7:
+                case 8:
                     Helper.Typing("Red", "게임을 종료합니다.");
                     //종료
                     Thread.Sleep(1000);
@@ -300,7 +305,8 @@ namespace Revolver_6
             {
                 case 1:
                     monster = MonsterData.MonsterFactory.MonsterSpawn();
-                    Battle.My_Phase();
+                    //Battle.My_Phase();
+                    GameBattlefloor();
                     break;
 
                 case 2:
@@ -308,6 +314,59 @@ namespace Revolver_6
                     GameHome();
                     break;
             }
+        }
+
+        public void GameBattlefloor()
+        {
+            Helper.Typing("yellow", "■■■\t전투\t■■■");
+            Helper.Typing("", "\n몇 층으로 들어가시겠습니까?");
+
+            Helper.Typing("", "\n[1] 1층부터 도전하기", 0);
+            Helper.Typing("", "[2] 2층부터 도전하기", 0);
+            Helper.Typing("", "[3] 3층부터 도전하기", 0);
+            Helper.Typing("", "[4] 4층부터 도전하기", 0);
+            Helper.Typing("", "[5] 5층부터 도전하기", 0);
+
+
+            Helper.Typing("", "\n6. 돌아가기\n원하시는 행동을 입력해주세요", 0);
+
+            Helper.TypingWrite("yellow", "\n>> ");
+
+            int input = Helper.WhatNum(0, 5);
+
+            switch (input)
+            {
+
+                case 1:
+                    GameManager.Instance.Difficulty = 1;
+                    Battle.My_Phase();
+                    break;
+
+                case 2:
+                    GameManager.Instance.Difficulty = 2;
+                    Battle.My_Phase();
+                    break;
+
+                case 3:
+                    GameManager.Instance.Difficulty = 3;
+                    Battle.My_Phase();
+                    break;
+
+                case 4:
+                    GameManager.Instance.Difficulty = 4;
+                    Battle.My_Phase();
+                    break;
+
+                case 5:
+                    GameManager.Instance.Difficulty = 5;
+                    Battle.My_Phase();
+                    break;
+
+                case 6:
+                    GameHome();
+                    break;
+            }
+
         }
 
         public void GameHotel()
