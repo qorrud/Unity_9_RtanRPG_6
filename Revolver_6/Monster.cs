@@ -59,16 +59,16 @@ namespace Revolver_6
 
         }
         public static Dictionary<int, MonsterStat> MonsterList = new Dictionary<int, MonsterStat>()
-        {                  //           name,      lv, maxhp, hp, atk, gold, exp, index
+        {                  //                name,      lv, maxhp, hp, atk, gold, exp, index
             {1, new MonsterData.MonsterStat( "미니언"   , 2, 6, 6, 15, 0, 0, 1)},
             {2, new MonsterData.MonsterStat("대포 미니언", 5, 15, 15, 25, 0, 0, 2)},
             {3, new MonsterData.MonsterStat("공허충"    , 3, 10, 10, 10, 0, 0, 3)},
             {4, new MonsterData.MonsterStat("공허의 전령", 8, 20, 20, 20, 0, 0, 4)},
             {5, new MonsterData.MonsterStat( "미니언"   , 2, 6, 6, 15, 0, 0, 1)},
             {6, new MonsterData.MonsterStat("대포 미니언", 5, 15, 15, 25, 0, 0, 2)},
-            {7, new MonsterData.MonsterStat("공허충"    , 3, 10, 10, 10, 0, 0, 3)},
+            {7, new MonsterData.MonsterStat("바론남작"    , 3, 10, 10, 10, 0, 0, 3)},
             {8, new MonsterData.MonsterStat("공허의 전령", 8, 20, 20, 20, 0, 0, 4)},
-        };
+        }; 
         public class MonsterFactory
         {
             public static int[] RandomSpawn()

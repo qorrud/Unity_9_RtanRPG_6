@@ -42,30 +42,29 @@ namespace Revolver_6
             {
                 sum += monster[i].Index;
             }
-
             return sum;
         }
 
-        public void PlayerExp(int value)
-        {
-            Data.Player.Exp += value;
+        // public void PlayerExp(int value)
+        // {
+        //     Data.Player.Exp += value;
 
-            if (Player.Exp >= Player.Level * 10)
-            {
-                Player.Exp -= Player.Level;
-                Player.Level++;
-            }
-        }
+        //     if (Player.Exp >= Player.Level * 10)
+        //     {
+        //         Player.Exp -= Player.Level;
+        //         Player.Level++;
+        //     }
+        // }
 
         public void BattleReward(int value)
         {
             if (value <= 5)
             {
-                ItemManager.AddItem(1);
+                ItemManager.AddItem(1); // 기본검 제공
             }
             else if (value <= 10)
             {
-                ItemManager.AddItem(101);
+                ItemManager.AddItem(101); // 기본방어구 제공
             }
         }
     }
