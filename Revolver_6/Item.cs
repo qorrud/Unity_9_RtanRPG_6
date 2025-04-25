@@ -9,7 +9,7 @@ namespace Revolver_6
         public ItemInfo()
         {
             Type = ClassType.knight;
-            Name = "공백";
+            Name = "오류!";
             Cost = -1;
             Eq = false;
         }
@@ -20,9 +20,11 @@ namespace Revolver_6
             Cost = cost;
             Eq = false;
         }
-        public virtual void ShowItem()
+        public virtual void ShowItem(int key)
         {
-
+            Helper.Typing("green", ItemDB.Items[key].Type);
+            Helper.Typing("green", ItemDB.Items[key].Name);
+            Helper.Typing("green", ItemDB.Items[key].Cost);
         }
     }
 
@@ -32,6 +34,7 @@ namespace Revolver_6
         {
             {1, new WeaponInfo(ClassType.knight, "기본검", 15, 200)},
             {101, new ProtecterInfo(ClassType.knight, "천갑옷", 50, 5, 200)},
+            {201, new ItemInfo(ClassType.all, "체력포션", 200)}
         };
     }
 }
