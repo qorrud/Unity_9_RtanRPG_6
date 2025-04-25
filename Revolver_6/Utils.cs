@@ -45,7 +45,7 @@ namespace Revolver_6
             return sum;
         }
 
-        public void PlayerExp(int value)
+        public static void LevelUp(int value)
         {
             Data.Player.Exp += value;
 
@@ -60,11 +60,11 @@ namespace Revolver_6
         public static void GainExp()
         {
             int sum = 0;
-            for (int i = 0; i < Data.monster.Length; i++)
+            for (int i = 0; i < Data.monster.Length; i++) // 몬스터의 수 만큼 반복
             {
-                sum += monster[i].Exp;
+                sum += monster[i].Exp;                  // 몬스터의 key에 해당하는 경험치를 sum에 더함
             }
-            Player.Exp += sum; //이걸 플레이어 프로필에 바로 저장하는게 맞나...?
+            Player.Exp += sum;                            // sum을 Player.Exp에 더함(적용시킴)
         }
 
         public static void GainGold()
@@ -74,7 +74,7 @@ namespace Revolver_6
             {
                 sum += monster[i].Gold;
             }
-            Player.Gold += sum; // Data Player에 저장해야하나? 이따 물어보자
+            Player.Gold += sum; 
         }
 
         public void BattleReward(int value)
