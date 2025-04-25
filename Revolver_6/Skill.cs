@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static Revolver_6.Data;
+
 
 namespace Revolver_6
 {
@@ -30,6 +32,7 @@ namespace Revolver_6
         }
 
         public List<Skill_Info> SkillList = new List<Skill_Info>() //스킬 담을 리스트
+     
 
         {
             
@@ -140,6 +143,33 @@ namespace Revolver_6
 
                },
 
+                new Skill_Info
+               {
+                   Skill_Name = "천벌",
+                   Skill_Description = "낙뢰를 떨어뜨려 적에게 피해를 입힌다.",
+                   Damage = 1.6,
+                   Use_MP = 30,
+                   ClassType = 8, //마법사만
+                   TargetType = 1,
+                   AttackTry = 1
+
+
+
+               },
+                new Skill_Info
+               {
+                   Skill_Name = "종말의 날",
+                   Skill_Description = "거대한 운석을 떨어뜨려 모든적을 초토화 시킨다.",
+                   Damage = 2,
+                   Use_MP = 50,
+                   ClassType = 8, //마법사만
+                   TargetType = MonsterData.MonsterList.Count,
+                   AttackTry = 1
+
+
+
+               },
+
 
 
 
@@ -150,8 +180,72 @@ namespace Revolver_6
 
         };
 
+        public List<Skill_Info> MySkillList = new List<Skill_Info>() //직업에 맞는 스킬 담을 리스트
 
+        { 
+        
+        }; 
+        
+        public void MySkill()
+        {
+            if (Player.Job is ClassType.knight) 
+            {
+                for (int i = 0; SkillList.Count > i; i++)
 
+                {
+                    if (SkillList[i].ClassType == 1 || SkillList[i].ClassType == 16) // 공용 스킬과 전사 스킬만
+                    {
+                        MySkillList.Add(SkillList[i]);
+
+                    }
+                }
+            }
+
+           else if (Player.Job is ClassType.archer) 
+            {
+                for (int i = 0; SkillList.Count > i; i++)
+
+                {
+                    if (SkillList[i].ClassType == 2 || SkillList[i].ClassType == 16) // 공용 스킬과 궁수 스킬만
+                    {
+                        MySkillList.Add(SkillList[i]);
+
+                    }
+                }
+            }
+
+            else if (Player.Job is ClassType.rogue)
+            {
+                for (int i = 0; SkillList.Count > i; i++)
+
+                {
+                    if (SkillList[i].ClassType == 4 || SkillList[i].ClassType == 16) // 공용 스킬과 도적 스킬만
+                    {
+                        MySkillList.Add(SkillList[i]);
+
+                    }
+                }
+            }
+
+            else if (Player.Job is ClassType.magician)
+            {
+                for (int i = 0; SkillList.Count > i; i++)
+
+                {
+                    if (SkillList[i].ClassType == 8 || SkillList[i].ClassType == 16) // 공용 스킬과 법사 스킬만
+                    {
+                        MySkillList.Add(SkillList[i]);
+
+                    }
+                }
+            }
+
+        }
+        
+            
+            
+           
+           
 
 
 
