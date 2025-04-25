@@ -22,9 +22,9 @@ namespace Revolver_6
                 Typing("green", "Vitory!\n");
 
                 Typing("white", $"던전에서 몬스터 ", "red", $"{monster.Length}", "white", "마리를 잡았습니다.");
-                Typing("red", "0.", "white", " 다음");
+                Typing("red", "1.", "white", " 다음 전투","","2. 돌아가기");
 
-                WhatNum(0, 0);
+                int input = WhatNum(1, 2);
                 int value = ExtraEffect.MonsterValue();
 
                 //마을로 돌아가는 로직
@@ -35,8 +35,22 @@ namespace Revolver_6
                     Thread.Sleep(400);
 
                 }
-                Console.Clear();
-                GameManager.Instance.TurnEnd();
+
+                switch (input)
+                {
+                    case 1:
+                        Console.Clear();
+                        Battle.My_Phase();
+                        break;
+
+                    case 2:
+                        Console.Clear();
+                        GameManager.Instance.TurnEnd();
+                        break;
+                }
+
+
+
 
             }
 
