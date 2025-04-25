@@ -323,30 +323,38 @@ namespace Revolver_6
             Helper.Typing("", "[5] 5층부터 도전하기", 0);
 
 
-            Helper.Typing("", "\n원하시는 행동을 입력해주세요");
+            Helper.Typing("", "\n0. 돌아가기\n원하시는 행동을 입력해주세요", 0);
 
             Helper.TypingWrite("yellow", "\n>> ");
 
-            int input = Helper.WhatNum(1, 5);
+            int input = Helper.WhatNum(0, 5);
 
             switch (input)
             {
+                case 0:
+                    GameHome();
+                    break;
+
                 case 1:
                     GameManager.Instance.Difficulty = 1;
                     Battle.My_Phase();
                     break;
+
                 case 2:
                     GameManager.Instance.Difficulty = 2;
                     Battle.My_Phase();
                     break;
+
                 case 3:
                     GameManager.Instance.Difficulty = 3;
                     Battle.My_Phase();
                     break;
+
                 case 4:
                     GameManager.Instance.Difficulty = 4;
                     Battle.My_Phase();
                     break;
+
                 case 5:
                     GameManager.Instance.Difficulty = 5;
                     Battle.My_Phase();
