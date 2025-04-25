@@ -28,7 +28,7 @@ namespace Revolver_6
                 int value = ExtraEffect.MonsterValue();
 
                 //마을로 돌아가는 로직
-                Typing("white", "던전 클리어!\n 마을로 귀환합니다");
+                Typing("white", "던전 클리어!");
                 for (int i = 0; i < 3; i++)
                 {
                     Typing("white", ".");
