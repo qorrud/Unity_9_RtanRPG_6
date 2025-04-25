@@ -59,14 +59,14 @@ namespace Revolver_6
         }
         public static Dictionary<int, MonsterStat> MonsterList = new Dictionary<int, MonsterStat>()
         {                  //                name,      lv, maxhp, hp, atk, gold, exp, index
-            {1, new MonsterData.MonsterStat("미니언"     , 2, 6, 6, 15, 10, 10, 1)},
-            {2, new MonsterData.MonsterStat("대포 미니언" , 4, 15, 15, 20, 20, 15, 2)},
-            {3, new MonsterData.MonsterStat("공허충"     , 5, 10, 10, 20, 30, 20, 3)},
-            {4, new MonsterData.MonsterStat("어스름 늑대" , 7, 20, 20, 25, 40, 25, 4)},
-            {5, new MonsterData.MonsterStat("칼날부리"    , 7, 20, 20, 25, 40, 25, 5)},
-            {6, new MonsterData.MonsterStat("심술 두꺼비" , 8, 25, 25, 30, 60, 30, 6)},
-            {7, new MonsterData.MonsterStat("공허의 전령" , 9, 30, 30, 40, 70, 35, 7)},
-            {8, new MonsterData.MonsterStat("바론 남작"   , 10, 35, 35, 50, 80, 50, 8)},
+            {1, new MonsterData.MonsterStat("미니언"     , 2, 6, 6, 8, 10, 5, 1)},
+            {2, new MonsterData.MonsterStat("대포 미니언" , 4, 12, 12, 10, 20, 10, 2)},
+            {3, new MonsterData.MonsterStat("공허충"     , 5, 10, 10, 12, 30, 15, 3)},
+            {4, new MonsterData.MonsterStat("어스름 늑대" , 7, 20, 20, 20, 40, 20, 4)},
+            {5, new MonsterData.MonsterStat("칼날부리"    , 7, 20, 20, 20, 40, 20, 5)},
+            {6, new MonsterData.MonsterStat("심술 두꺼비" , 8, 25, 25, 25, 60, 30, 6)},
+            {7, new MonsterData.MonsterStat("공허의 전령" , 9, 30, 30, 30, 70, 40, 7)},
+            {8, new MonsterData.MonsterStat("바론 남작"   , 10, 35, 35, 40, 80, 50, 8)},
         };
         public class MonsterFactory
         {

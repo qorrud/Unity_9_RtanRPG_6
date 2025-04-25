@@ -34,6 +34,7 @@ namespace Revolver_6
             Helper.Typing("", $"방어력 : {Player.Armor}", 0);
             Helper.Typing("", $"체 력 : {Player.CurrentHP}", 0);
             Helper.Typing("", $"Gold :  {Player.Gold} G", 0);
+            Helper.Typing("", $"Exp :  {Player.Exp} exp", 0);
         }
     }
     public class PlayerInfo

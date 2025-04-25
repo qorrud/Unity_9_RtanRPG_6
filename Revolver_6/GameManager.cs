@@ -40,7 +40,6 @@ namespace Revolver_6
             Helper.Typing("", "다음날이 되었습니다.\n현재 난이도 : ", "yellow", Difficulty);
             title.GameHome();
         }
-
         public int Difficulty = 1;
         public bool gaemOver = false;
     }

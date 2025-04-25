@@ -45,16 +45,37 @@ namespace Revolver_6
             return sum;
         }
 
-        // public void PlayerExp(int value)
-        // {
-        //     Data.Player.Exp += value;
+        public void PlayerExp(int value)
+        {
+            Data.Player.Exp += value;
 
-        //     if (Player.Exp >= Player.Level * 10)
-        //     {
-        //         Player.Exp -= Player.Level;
-        //         Player.Level++;
-        //     }
-        // }
+            if (Player.Exp >= Player.Level * 30)
+            {
+                Player.Exp -= Player.Level * 30;
+                Player.Level++;
+                Helper.Typing("green","축하합니다!","blue",$"{Data.Player.Level}","green","이 되었습니다!");
+            }
+        }
+
+        public static void GainExp()
+        {
+            int sum = 0;
+            for (int i = 0; i < Data.monster.Length; i++)
+            {
+                sum += monster[i].Exp;
+            }
+            Player.Exp += sum; //이걸 플레이어 프로필에 바로 저장하는게 맞나...?
+        }
+
+        public static void GainGold()
+        {
+            int sum = 0;
+            for (int i = 0; i < Data.monster.Length; i++)
+            {
+                sum += monster[i].Gold;
+            }
+            Player.Gold += sum; // Data Player에 저장해야하나? 이따 물어보자
+        }
 
         public void BattleReward(int value)
         {
