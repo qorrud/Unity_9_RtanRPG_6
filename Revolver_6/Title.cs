@@ -228,7 +228,7 @@ namespace Revolver_6
         {
             Helper.Typing("yellow", "■■■\t가방\t■■■");
 
-            //for () { } // 아이템 리스트
+            GameManager.Instance.ShowInventory();
 
             Helper.Typing("", "\n1. 장비관리", 0);
             Helper.Typing("", "2. 돌아가기", 0);

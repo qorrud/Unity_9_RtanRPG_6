@@ -34,7 +34,6 @@ namespace Revolver_6
             Helper.Typing("", $"방어력 : {Player.Armor}", 0);
             Helper.Typing("", $"체 력 : {Player.CurrentHP}", 0);
             Helper.Typing("", $"Gold :  {Player.Gold} G", 0);
-            Helper.Typing("", $"Exp :  {Player.Exp} exp", 0);
         }
     }
     public class PlayerInfo
@@ -46,8 +45,21 @@ namespace Revolver_6
         public int Armor { get ; set; } = 0;
         public int CurrentHP = 1;
         public int MaxHp { get; set; } = 100;
+        public int CurrentMP = 1;
+        public int MaxMp = 50;
         public int Gold { get; set; } = 1500;
         public int Exp {get; set; } = 0;
+
+        public void ChangeStat(string stat, int value)
+        {
+            switch (stat)
+            {
+                case "power":
+                    Player.Power += value;
+                    Typing("", "공격력이 ", "green", Power, "", " 올랐습니다!");
+                    break;
+            }
+        }
         public PlayerInfo(string name, ClassType job)
         {
             Name = name;
@@ -81,6 +93,7 @@ namespace Revolver_6
                     break;
             }
             CurrentHP = MaxHp;
+            CurrentMP = MaxMp;
         }
     }
 }
