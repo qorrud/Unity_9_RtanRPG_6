@@ -53,7 +53,7 @@ namespace Revolver_6
             {
                 Player.Exp -= Player.Level * 30;
                 Player.Level++;
-                Helper.Typing("green","축하합니다!","blue",$"{Data.Player.Level}","green","이 되었습니다!");
+                Helper.Typing("green", "축하합니다!", "blue", $"{Data.Player.Level}", "green", "이 되었습니다!");
             }
         }
 
@@ -88,14 +88,69 @@ namespace Revolver_6
                 ItemManager.AddItem(101); // 기본방어구 제공
             }
         }
+
+        public static void MakeShop()
+        {
+            GameManager.Instance.DummyInt1 = new int[3];
+            Random random = new Random();
+
+            for (int i = 0; i < 3; i++)
+            {
+                int a = random.Next(1, 4);
+                GameManager.Instance.DummyInt1[i] = a;
+            }
+            int[] weaponSell = new int[GameManager.Instance.DummyInt1[0]]; 
+            int[] protecterSell = new int[GameManager.Instance.DummyInt1[1]]; 
+            int[] normalSell = new int[GameManager.Instance.DummyInt1[2]]; 
+
+            for (int i = 0; i < 3; i++)
+            {
+                switch (i)
+                {
+                    case 0:
+                        for (int j = 0; j < weaponSell.Length; j++)
+                        {
+                            weaponSell[j] = random.Next(1, 5);
+                        }
+                        break;
+
+                    case 1:
+                        for (int j = 0; j < protecterSell.Length; j++)
+                        {
+                            protecterSell[j] = random.Next(101, 105);
+                        }
+                        break;
+
+                    case 2:
+                        for (int j = 0; j < normalSell.Length; j++)
+                        {
+                            normalSell[j] = random.Next(201, 204);
+                        }
+                        break;
+                }
+            }
+            GameManager.Instance.DummyInt1 = weaponSell;
+            GameManager.Instance.DummyInt2 = protecterSell;
+            GameManager.Instance.DummyInt3 = normalSell;
+        }
     }
 
     public class ItemManager
     {
         public static void AddItem(int key)
         {
-            Inventory.Add(ItemDB.Items[key]);
+            if (ItemDB.Items[key] is WeaponInfo)
+            {
+                Data.Inventory.Add(ItemDB.Items[key]);
+            }
+            else if (ItemDB.Items[key] is ProtecterInfo)
+            {
+                Data.Inventory.Add(ItemDB.Items[key]);
+            }
+            else
+            {
+                Data.Inventory.Add(ItemDB.Items[key]);
+            }
         }
     }
-
 }
