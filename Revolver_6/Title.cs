@@ -129,8 +129,8 @@ namespace Revolver_6
             Helper.Typing("", "4. 전투 하기", 0);
             Helper.Typing("", "5. 여관 가기", 0);
             Helper.Typing("", "6. 상점 가기", 0);
-            Helper.Typing("", "6. 저장 하기", 0);
-            Helper.Typing("", "7. 게임 종료", 0);
+            Helper.Typing("", "7. 저장 하기", 0);
+            Helper.Typing("", "8. 게임 종료", 0);
 
 
 
