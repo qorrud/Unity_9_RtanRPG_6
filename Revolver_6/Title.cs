@@ -26,7 +26,7 @@ namespace Revolver_6
                     check = true;
                 }
 
-                if (input == "n") {}
+                if (input == "n") { }
             }
             return Name;
         }
@@ -76,8 +76,7 @@ namespace Revolver_6
                     check = true;
                 }
 
-                if (input == "n") {}
-                
+                if (input == "n") { }
             }
             return Job;
         }
