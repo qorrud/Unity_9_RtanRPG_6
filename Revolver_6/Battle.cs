@@ -22,7 +22,7 @@ namespace Revolver_6
 
             if (Player.CurrentMP >= Player.MaxMp)  // 마나 초과 방지
             {
-                Player.CurrentMP = Player.MaxMp; 
+                Player.CurrentMP = Player.MaxMp;
             }
 
 
@@ -169,15 +169,15 @@ namespace Revolver_6
 
 
 
-                    Typing("red", "0.", "white", " 다음\n\n>>");
+                    //Typing("red", "0.", "white", " 다음\n\n>>");
 
-                    WhatNum(0, 0);
+                    //WhatNum(0, 0);
 
-                    Player_turn = false; //플레이어의 턴이 종료됐으므로 false로 변경 후 몬스터의 턴 시작
+                    //Player_turn = false; //플레이어의 턴이 종료됐으므로 false로 변경 후 몬스터의 턴 시작
 
-                    Console.Clear();
+                    //Console.Clear();
 
-                    Result.Player_Turn_End(Player_turn, Monster_count);
+                    //Result.Player_Turn_End(Player_turn, Monster_count);
 
 
 
@@ -395,14 +395,15 @@ namespace Revolver_6
 
 
 
-                        else {
+                        else
+                        {
 
-                            Typing("white", $" {monster[i].Name}을(를) 맞췄습니다.");
+                            TypingWrite("white", $" {monster[i].Name}을(를) 맞췄습니다.");
 
 
 
-                            TypingWrite("red", $" {skill_damage} 데미지");
-                            TypingWrite("\nwhite", $"Lv.");
+                            Typing("red", $" {skill_damage} 데미지");
+                            TypingWrite("white", $"Lv.");
                             TypingWrite("red", $"{monster[i].Level} ");
                             TypingWrite("white", $"{monster[i].Name}\n");
                             TypingWrite("white", "HP ");
@@ -422,7 +423,7 @@ namespace Revolver_6
                         {
                             TypingWrite("gray", " Dead\n");
 
-                            Monster_count --;
+                            Monster_count--;
 
 
                         }
@@ -444,17 +445,21 @@ namespace Revolver_6
 
                 }
 
-                Typing("red", "0.", "white", " 다음\n\n>>");
 
-                WhatNum(0, 0);
-
-                Player_turn = false; //플레이어의 턴이 종료됐으므로 false로 변경 후 몬스터의 턴 시작
-
-                Console.Clear();
-
-                Result.Player_Turn_End(Player_turn, Monster_count);
             }
-    }
+
+
+
+            Typing("red", "0.", "white", " 다음\n\n>>");
+
+            WhatNum(0, 0);
+
+            Player_turn = false; //플레이어의 턴이 종료됐으므로 false로 변경 후 몬스터의 턴 시작
+
+            Console.Clear();
+
+            Result.Player_Turn_End(Player_turn, Monster_count);
+        }
 
 
 
