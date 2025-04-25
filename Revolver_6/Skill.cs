@@ -105,11 +105,11 @@ namespace Revolver_6
                {
                    Skill_Name = "태풍의 시",
                    Skill_Description = "태풍같은 속도로 모든적에게 화살을 퍼부어 휩쓸어버린다.",
-                   Damage = 0.2,
-                   Use_MP = 30,
+                   Damage = 2,
+                   Use_MP = 50,
                    ClassType = 2, //궁수만
                    TargetType = MonsterData.MonsterList.Count,
-                   AttackTry = 10
+                   AttackTry = 1
 
 
 
