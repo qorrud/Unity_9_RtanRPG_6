@@ -2,6 +2,7 @@
 using static Revolver_6.Data;
 
 using System.Security.Cryptography.X509Certificates;
+using System;
 
 namespace Revolver_6
 {
@@ -216,7 +217,7 @@ namespace Revolver_6
 
                 }
 
-                if (Player_skill.MySkillList[input - 1].TargetType == 1) Typing("red", "0.", "white", " 다음\n\n>>");
+                if (Player_skill.MySkillList[input - 1].TargetType == 1)// 단일 공격 일 때
 
 
 
@@ -331,16 +332,6 @@ namespace Revolver_6
                             TypingWrite("white", $" {monster[attmon].HP} \n");
 
 
-
-
-
-
-
-
-
-
-
-
                         }
 
 
@@ -349,26 +340,121 @@ namespace Revolver_6
 
 
 
-                    Typing("red", "0.", "white", " 다음\n\n>>");
 
-                    WhatNum(0, 0);
-
-                    Player_turn = false; //플레이어의 턴이 종료됐으므로 false로 변경 후 몬스터의 턴 시작
-
-                    Console.Clear();
-
-                    Result.Player_Turn_End(Player_turn, Monster_count);
 
                 }
 
 
+                else if (Player_skill.MySkillList[input - 1].TargetType == monster.Length) // 단일 공격이 아닐 때 
+
+
+                {
+                    Player.CurrentMP -= Player_skill.MySkillList[input - 1].Use_MP; //mp 소모
+
+
+                    int skill_damage = (int)(Player.Power * Player_skill.MySkillList[input - 1].Damage); // 데미지 계산
+
+
+                    Typing("Red", "Battle!\n");
+                    Typing("white", $"{Player.Name}의 {Player_skill.MySkillList[input - 1].Skill_Name}!");
+
+
+                    for (int i = 0; i < monster.Length; i++)
+                    {
+
+
+                        bool iscritical = false;
+                        iscritical = CheckCritical();
+                        if (iscritical)
+                        {
+                            skill_damage = (int)Math.Ceiling(skill_damage * 1.6);
+
+
+                            //크리티컬 발생시 데미지 1.6배로전환합니다.
+                            Typing("white", $" {monster[i].Name}을(를) 맞췄습니다.");
 
 
 
+                            TypingWrite("red", $" {skill_damage} 데미지");
+
+                            if (iscritical == true)
+                            {
+
+                                TypingWrite("red", " - 치명타 공격!\n");
+
+                                TypingWrite("\nwhite", $"Lv.");
+                                TypingWrite("red", $"{monster[i].Level} ");
+                                TypingWrite("white", $"{monster[i].Name}\n");
+                                TypingWrite("white", "HP ");
+                                TypingWrite("red", $"{monster[i].HP}");
+
+                                TypingWrite("white", " ->");
+                            }
+                        }
+
+
+
+
+                        else {
+
+                            Typing("white", $" {monster[i].Name}을(를) 맞췄습니다.");
+
+
+
+                            TypingWrite("red", $" {skill_damage} 데미지");
+                            TypingWrite("\nwhite", $"Lv.");
+                            TypingWrite("red", $"{monster[i].Level} ");
+                            TypingWrite("white", $"{monster[i].Name}\n");
+                            TypingWrite("white", "HP ");
+                            TypingWrite("red", $"{monster[i].HP}");
+
+                            TypingWrite("white", " ->");
+
+                        }
+
+                        monster[i].HP -= skill_damage; //데미지 계산
+                        if (monster[i].HP < 0) //체력이 마이너스가 되면 안되니까 음수로 되면 0으로 설정합니다.
+                        {
+
+                            monster[i].HP = 0;
+                        }
+                        if (monster[i].HP == 0) // 몬스터의 체력이 0이 된다면 죽이는 로직
+                        {
+                            TypingWrite("gray", " Dead\n");
+
+                            Monster_count --;
+
+
+                        }
+                        else //죽지 않았다면 남은 체력을 표시
+                        {
+                            TypingWrite("white", $" {monster[i].HP} \n");
+
+
+
+                        }
+
+
+
+
+
+
+                    }
+
+
+                }
+
+                Typing("red", "0.", "white", " 다음\n\n>>");
+
+                WhatNum(0, 0);
+
+                Player_turn = false; //플레이어의 턴이 종료됐으므로 false로 변경 후 몬스터의 턴 시작
+
+                Console.Clear();
+
+                Result.Player_Turn_End(Player_turn, Monster_count);
             }
-
-
-        }
+    }
 
 
 

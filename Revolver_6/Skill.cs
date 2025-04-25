@@ -79,7 +79,7 @@ namespace Revolver_6
                    Damage = 2,
                    Use_MP = 50,
                    ClassType = 1, //전사만
-                   TargetType = MonsterData.MonsterList.Count,
+                   TargetType = monster.Length,
                    AttackTry = 1
 
 
@@ -108,7 +108,7 @@ namespace Revolver_6
                    Damage = 2,
                    Use_MP = 50,
                    ClassType = 2, //궁수만
-                   TargetType = MonsterData.MonsterList.Count,
+                   TargetType = monster.Length,
                    AttackTry = 1
 
 
@@ -136,7 +136,7 @@ namespace Revolver_6
                    Damage = 2,
                    Use_MP = 50,
                    ClassType = 4, //도적만
-                   TargetType = MonsterData.MonsterList.Count,
+                   TargetType = monster.Length,
                    AttackTry = 1
 
 
@@ -163,7 +163,7 @@ namespace Revolver_6
                    Damage = 2,
                    Use_MP = 50,
                    ClassType = 8, //마법사만
-                   TargetType = MonsterData.MonsterList.Count,
+                   TargetType = monster.Length,
                    AttackTry = 1
 
 
