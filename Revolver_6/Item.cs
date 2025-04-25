@@ -45,8 +45,10 @@ namespace Revolver_6
             {104, new ProtecterInfo(ClassType.magician, "천로브", 50, 5, 200, 104)},
 
             {201, new ItemInfo(ClassType.all, "체력포션", 200, 201)},
-            {202, new ItemInfo(ClassType.all, "마나포션", 200, 201)},
-            {203, new ItemInfo(ClassType.all, "마나포션", 200, 201)},
+            {202, new ItemInfo(ClassType.all, "마나포션", 200, 202)},
+            {203, new ItemInfo(ClassType.all, "분노의_영약", 200, 203)},
+            {203, new ItemInfo(ClassType.all, "경험치_포션", 200, 204)},
+            {203, new ItemInfo(ClassType.all, "분노의_영약", 200, 205)},
         };
     }
 }
