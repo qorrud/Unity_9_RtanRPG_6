@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Revolver_6
 {
-    internal class Data
+    internal static class Data
     {
         public static PlayerInfo Player;
 

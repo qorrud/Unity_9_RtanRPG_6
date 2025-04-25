@@ -6,7 +6,6 @@ namespace Revolver_6
     {
         public Title title = new Title();
         private static GameManager instance;
-
         public static GameManager Instance
         {
             get
@@ -17,7 +16,7 @@ namespace Revolver_6
             }
         }
 
-        private GameManager(){}
+        private GameManager() {}
 
         
         public void NewPlayer(string name, ClassType Job) // 플레이어 객체를을 초기화 하는 함수
