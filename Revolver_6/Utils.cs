@@ -45,10 +45,8 @@ namespace Revolver_6
             return sum;
         }
 
-        public static void LevelUp(int value)
+        public static void LevelUp()
         {
-            Data.Player.Exp += value;
-
             if (Player.Exp >= Player.Level * 30)
             {
                 Player.Exp -= Player.Level * 30;
