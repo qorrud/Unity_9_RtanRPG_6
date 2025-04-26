@@ -42,6 +42,7 @@ namespace Revolver_6
                 {
                     case 1:
                         Console.Clear();
+                        Battle.mystage = (Battle.mystage % 3) + 1;
                         monster = MonsterData.MonsterFactory.MonsterSpawn();
                         Battle.My_Phase();
                         break;

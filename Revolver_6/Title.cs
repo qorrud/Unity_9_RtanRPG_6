@@ -338,27 +338,32 @@ namespace Revolver_6
             {
 
                 case 1:
-                    GameManager.Instance.Difficulty = 1;
+                    GameManager.Instance.Difficulty = 3;
+                    Battle.mystage = 1;
                     Battle.My_Phase();
                     break;
 
                 case 2:
-                    GameManager.Instance.Difficulty = 2;
+                    GameManager.Instance.Difficulty = 6;
+                    Battle.mystage = 1;
                     Battle.My_Phase();
                     break;
 
                 case 3:
-                    GameManager.Instance.Difficulty = 3;
+                    GameManager.Instance.Difficulty = 9;
+                    Battle.mystage = 1;
                     Battle.My_Phase();
                     break;
 
                 case 4:
-                    GameManager.Instance.Difficulty = 4;
+                    GameManager.Instance.Difficulty = 12;
+                    Battle.mystage = 1;
                     Battle.My_Phase();
                     break;
 
                 case 5:
-                    GameManager.Instance.Difficulty = 5;
+                    GameManager.Instance.Difficulty = 15;
+                    Battle.mystage = 1;
                     Battle.My_Phase();
                     break;
 

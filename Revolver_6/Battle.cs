@@ -8,7 +8,7 @@ namespace Revolver_6
 {
     internal static class Battle
     {
-        static int mystage = 0;
+        public static int mystage = 1;
 
         static bool Player_turn = true; //플레이어의 턴은 true 몬스터의 턴은 false로 할게요
         static int Monster_count = monster.Length; //몬스터 개수를 새기위한 카운트입니다. Dead 됐을시 1개씩 차감하고 0이되면 전투에서 승리한 걸로 취급
@@ -19,7 +19,6 @@ namespace Revolver_6
         //플레이어의 턴일때 실행되는 함수입니다. 플레이어의 턴이 끝나면  turn 은 false로 변경해서 적의 턴으로 넘어갑니다.
         {
             int floor = GameManager.Instance.Difficulty / 3; // 층 숫자
-            mystage = (mystage % 3) + 1; // 구역 숫자
 
             if (Player.CurrentMP >= Player.MaxMp)  // 마나 초과 방지
             {
