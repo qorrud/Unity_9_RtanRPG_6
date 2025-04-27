@@ -40,28 +40,28 @@ namespace Revolver_6
 
             bool check = false;
 
-            while (!check) 
+            while (!check)
             {
                 JobInfo.Jobinfo();
 
                 Helper.TypingWrite("yellow", "\n>> ");
-                int JobIndex = Helper.WhatNum(1,4);
+                int JobIndex = Helper.WhatNum(1, 4);
 
                 switch (JobIndex)
                 {
-                    case 1: 
-                        Job = ClassType.knight; 
+                    case 1:
+                        Job = ClassType.knight;
                         break;
 
                     case 2:
-                        Job = ClassType.archer; 
+                        Job = ClassType.archer;
                         break;
-                    case 3: 
-                        Job = ClassType.rogue; 
+                    case 3:
+                        Job = ClassType.rogue;
                         break;
 
                     case 4:
-                        Job = ClassType.magician; 
+                        Job = ClassType.magician;
                         break;
                 }
 
@@ -81,7 +81,7 @@ namespace Revolver_6
             return Job;
         }
 
-        
+
         public void GameTitle()
         {
             Helper.Typing("yellow", "\n      ___           ___           ___           ___           ___           ___           ___     \r\n     /\\  \\         /\\  \\         /\\  \\         /\\  \\         /\\  \\         /\\  \\         /\\__\\    \r\n    /::\\  \\       /::\\  \\       /::\\  \\       /::\\  \\        \\:\\  \\       /::\\  \\       /::|  |   \r\n   /:/\\ \\  \\     /:/\\:\\  \\     /:/\\:\\  \\     /:/\\:\\  \\        \\:\\  \\     /:/\\:\\  \\     /:|:|  |   \r\n  _\\:\\~\\ \\  \\   /::\\~\\:\\  \\   /::\\~\\:\\  \\   /::\\~\\:\\  \\       /::\\  \\   /::\\~\\:\\  \\   /:/|:|  |__ \r\n /\\ \\:\\ \\ \\__\\ /:/\\:\\ \\:\\__\\ /:/\\:\\ \\:\\__\\ /:/\\:\\ \\:\\__\\     /:/\\:\\__\\ /:/\\:\\ \\:\\__\\ /:/ |:| /\\__\\\r\n \\:\\ \\:\\ \\/__/ \\/__\\:\\/:/  / \\/__\\:\\/:/  / \\/_|::\\/:/  /    /:/  \\/__/ \\/__\\:\\/:/  / \\/__|:|/:/  /\r\n  \\:\\ \\:\\__\\        \\::/  /       \\::/  /     |:|::/  /    /:/  /           \\::/  /      |:/:/  / \r\n   \\:\\/:/  /         \\/__/        /:/  /      |:|\\/__/     \\/__/            /:/  /       |::/  /  \r\n    \\::/  /                      /:/  /       |:|  |                       /:/  /        /:/  /   \r\n     \\/__/                       \\/__/         \\|__|                       \\/__/         \\/__/    ", 0);
@@ -99,7 +99,7 @@ namespace Revolver_6
                 case 1:
                     // 캐릭터 이름 짓기, 직업선택
                     Helper.Typing("red", "스파르타에 찾아온, 당신의 이름은 무엇입니까?");
-                    Helper.TypingWrite("yellow", "\n>> ");              
+                    Helper.TypingWrite("yellow", "\n>> ");
                     break;
 
                 case 2:
@@ -149,7 +149,6 @@ namespace Revolver_6
                     break;
 
                 case 2:
-                    Console.Clear();
                     //가방
                     GameInventory();
                     break;
@@ -168,8 +167,8 @@ namespace Revolver_6
 
                 case 5:
                     Console.Clear();
-                    // 여관
-                    Inn.InnIntro();
+                    //여관
+                    GameHotel();
                     break;
 
                 case 6:
@@ -212,9 +211,7 @@ namespace Revolver_6
             {
                 case 1:
                     //장비관리
-                    Helper.Typing("", "아직 구현되지 않은 기능입니다.");
-                    Thread.Sleep(1000);
-                    GameHome();
+                    GameInventory();
                     break;
 
                 case 2:
@@ -224,13 +221,24 @@ namespace Revolver_6
             }
         }
 
+        public void GameEqment()
+        {
+            GameManager.Instance.ShowInventory();
+            Helper.Typing("", "\n원하시는 장비 번호를 입력해주세요.");
+            Helper.TypingWrite("yellow", "\n>> ");
+
+            int input = Helper.WhatNum(1, Data.Inventory.Count);
+            Inventory[input-1].EqItem();
+        }
+
         public void GameInventory()
         {
+            Console.Clear();
             Helper.Typing("yellow", "■■■\t가방\t■■■");
 
             GameManager.Instance.ShowInventory();
 
-            Helper.Typing("", "\n1. 장비관리", 0);
+            Helper.Typing("", "\n1. 장착/해제", 0);
             Helper.Typing("", "2. 돌아가기", 0);
 
             Helper.Typing("", "\n원하시는 행동을 입력해주세요");
@@ -242,10 +250,8 @@ namespace Revolver_6
             switch (input)
             {
                 case 1:
-                    //장비관리
-                    Helper.Typing("", "아직 구현되지 않은 기능입니다.");
-                    Thread.Sleep(1000);
-                    GameHome();
+                    Console.Clear();
+                    GameEqment();
                     break;
 
                 case 2:
@@ -392,7 +398,7 @@ namespace Revolver_6
             switch (input)
             {
                 case 1:
-                    //휴식관리
+                    Inn.InnIntro();
                     break;
 
                 case 2:

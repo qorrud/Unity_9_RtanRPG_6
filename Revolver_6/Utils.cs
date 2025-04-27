@@ -137,18 +137,7 @@ namespace Revolver_6
     {
         public static void AddItem(int key)
         {
-            if (ItemDB.Items[key] is WeaponInfo)
-            {
-                Data.Inventory.Add(ItemDB.Items[key]);
-            }
-            else if (ItemDB.Items[key] is ProtecterInfo)
-            {
-                Data.Inventory.Add(ItemDB.Items[key]);
-            }
-            else
-            {
-                Data.Inventory.Add(ItemDB.Items[key]);
-            }
+            Data.Inventory.Add(ItemDB.Items[key]);
         }
     }
 }

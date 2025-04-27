@@ -16,6 +16,10 @@
             PlayerJob = GameManager.Instance.title.ReadJob();
 
             GameManager.Instance.NewPlayer(PlayerName, PlayerJob);
+            
+            ItemManager.AddItem(666);
+            ItemManager.AddItem(667);
+            ItemManager.AddItem(201);
             while (!GameManager.Instance.gaemOver) // 게임시작
             {
 
