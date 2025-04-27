@@ -229,7 +229,7 @@ namespace Revolver_6
                     Typing("red", $"{Player_skill.MySkillList[input - 1].Skill_Name}을(를) 누구에게 사용합니까?\n>>");
                     int attmon = WhatNum(1, monster.Length) - 1; //몬스터 번호 지정
 
-                    while ((monster[attmon - 1].HP == 0))
+                    while ((monster[attmon].HP == 0))
                     {
 
                         Typing("yellow", "죽은 몬스터는 공격 할 수 없습니다!");
@@ -250,7 +250,7 @@ namespace Revolver_6
                     Typing("Red", "Battle!\n");
                     Typing("white", $"{Player.Name}의 {Player_skill.MySkillList[input - 1].Skill_Name}!");
                     TypingWrite("white", $"Lv.");
-                    TypingWrite("red", $"{monster[attmon - 1].Level}");
+                    TypingWrite("red", $"{monster[attmon].Level}");
 
 
                     for (int i = 0; i < Player_skill.MySkillList[input - 1].AttackTry; i++) //스킬 공격

@@ -163,7 +163,7 @@ namespace Revolver_6
                    Damage = 2,
                    Use_MP = 50,
                    ClassType = 8, //마법사만
-                   TargetType = monster.Length,
+                   TargetType = monster.Length, // 전체 공격기 상대 1명이면 골라야함
                    AttackTry = 1
 
 

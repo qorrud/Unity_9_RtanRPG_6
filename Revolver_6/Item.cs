@@ -47,8 +47,8 @@ namespace Revolver_6
             {201, new ItemInfo(ClassType.all, "체력포션", 200, 201)},
             {202, new ItemInfo(ClassType.all, "마나포션", 200, 202)},
             {203, new ItemInfo(ClassType.all, "분노의_영약", 200, 203)},
-            {203, new ItemInfo(ClassType.all, "경험치_포션", 200, 204)},
-            {203, new ItemInfo(ClassType.all, "분노의_영약", 200, 205)},
+            {204, new ItemInfo(ClassType.all, "경험치_포션", 200, 204)},
+            {205, new ItemInfo(ClassType.all, "분노의_영약", 200, 205)},
         };
     }
 }
