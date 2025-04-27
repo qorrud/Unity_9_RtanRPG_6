@@ -1,6 +1,6 @@
 namespace Revolver_6
 {
-    public class Shop
+    internal class Shop
     {
         public static void ShowShop(int[] a, int[] b, int[] c)
         {

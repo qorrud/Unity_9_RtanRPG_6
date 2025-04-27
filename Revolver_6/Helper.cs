@@ -138,5 +138,12 @@ namespace Revolver_6
             return index;
         }
         // 사용방법 int input = WhatNum(1, 3); 하면 input은 사용자가 입력한 1~3 숫자값을 받음
+
+        public static void UserSure()
+        {
+            TypingWrite("", "아무키를 입력");
+            Console.ReadLine();
+            Console.WriteLine();
+        }
     }
 }
