@@ -1,4 +1,4 @@
-﻿using static Revolver_6.Helper;
+using static Revolver_6.Helper;
 using static Revolver_6.Data;
 
 using System.Security.Cryptography.X509Certificates;
