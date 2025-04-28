@@ -7,13 +7,14 @@ namespace Revolver_6
         private int Power = 1000;
 
         public WeaponInfo() { }
-        public WeaponInfo(ClassType type, string name, int power, int cost)
+        public WeaponInfo(ClassType type, string name, int power, int cost, int index)
         {
             base.Type = type;
             base.Name = name;
             this.Power = power;
             base.Cost = cost;
             base.Eq = false;
+            base.Index = index;
         }
 
         public override void ShowItem()
@@ -57,7 +58,7 @@ namespace Revolver_6
         public int Armor = 1000;
         public ProtecterInfo() { }
 
-        public ProtecterInfo(ClassType type, string name, int hP, int armor, int cost)
+        public ProtecterInfo(ClassType type, string name, int hP, int armor, int cost, int index)
         {
             base.Type = type;
             base.Name = name;
@@ -65,6 +66,7 @@ namespace Revolver_6
             this.Armor = armor;
             base.Cost = cost;
             base.Eq = false;
+            base.Index = index;
         }
         public override void ShowItem()
         {
