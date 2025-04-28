@@ -35,25 +35,37 @@ namespace Revolver_6
             int player_damage = random.Next((int)min, (int)max + 1); // 오차에 따른 랜덤 데미지 설정하기
 
 
-            Console.Clear();
-
-            Typing("Red", "Battle!");
-
-            Typing("", $"{floor}층 - {mystage}구역", 0); // 층 구역 정보 추가
-
-            MonsterData.MonsterStat.Display(monster); // 몬스터 정보를 출력합니다.
-
-            Console.WriteLine();
-            Console.WriteLine();
-            Typing("white", $"[내정보]\nLv.{Player.Level}  {Player.Name} ({Player.Job})\nHP {Player.MaxHp}/{Player.CurrentHP}\nMP {Player.MaxMp}/{Player.CurrentMP}\n");
-            Typing("Yellow", $"예상 데미지 {min} ~ {max}\n");
-            //플레이어의 정보 출력합니다.
-
             //Profile.Player(); 
+            int Player_Action = -1;
+            while (true)
+            {
+                Console.Clear();
 
+                Typing("Red", "Battle!");
 
-            Typing("white", "1. 공격\n2. 스킬\n원하시는 행동을 입력해주세요.\n>>");
-            int Player_Action = WhatNum(1, 2); //return 값은 index
+                Typing("", $"{floor}층 - {mystage}구역", 0); // 층 구역 정보 추가
+                MonsterData.MonsterStat.Display(monster); // 몬스터 정보를 출력합니다.
+
+                Console.WriteLine();
+                Console.WriteLine();
+                Typing("white", $"[내정보]\nLv.{Player.Level}  {Player.Name} ({Player.Job})\nHP {Player.MaxHp}/{Player.CurrentHP}\nMP {Player.MaxMp}/{Player.CurrentMP}\n");
+                Typing("Yellow", $"예상 데미지 {min} ~ {max}\n");
+                //플레이어의 정보 출력합니다.
+                Typing("white", "1. 공격\n2. 스킬\n3.아이템\n원하시는 행동을 입력해주세요.\n>>");
+                Player_Action = WhatNum(1, 3); //return 값은 index
+
+                if (Player_Action == 3)
+                {
+                    GameManager.Instance.ShowInventory();
+                    Typing("", "사용하실 아이템을 선택해주세요");
+                    TypingWrite("", "선택 >> ");
+                    int input = WhatNum(1, Data.Inventory.Count);
+
+                    ItemManager.UsePotion(input);
+                }
+                else { break; }
+            }
+
 
 
             // 공격 선택시
@@ -100,7 +112,6 @@ namespace Revolver_6
 
                 }
 
-<<<<<<< Updated upstream
 
 
 
@@ -113,25 +124,20 @@ namespace Revolver_6
                     TypingWrite("white", $" {monster[input].Name}을(를) 공격했지만 아무 일도 일어나지 않았습니다...\n"); //TypingWrite 함수 갱신되기 전에 사용
                     isavoid = false;
 
-            }
-            else //회피 안했을때
-            {
-                TypingWrite("white", $" {monster[input].Name}을(를) 맞췄습니다. [데미지 : "); //TypingWrite 함수 갱신되기 전에 사용
-                TypingWrite("red", $"{player_damage}");
-              
-                if (iscritical == true && isavoid == false)
-=======
-                bool iscritical = false; //크리티컬뜸?
-                bool isavoid = CheckAvoid(); //피함?
-                if (isavoid) // 10%확률로 회피했으면 데미지 0
->>>>>>> Stashed changes
-                {
-                    TypingWrite("white", "]");
-                    TypingWrite("red", " - 치명타 공격!\n");
                 }
-                else
+                else //회피 안했을때
                 {
-                    TypingWrite("white", "]\n");
+                    TypingWrite("white", $" {monster[input].Name}을(를) 맞췄습니다. [데미지 : "); //TypingWrite 함수 갱신되기 전에 사용
+                    TypingWrite("red", $"{player_damage}");
+
+                    if (iscritical == true && isavoid == false)
+                    {
+                        TypingWrite("white", "]");
+                        TypingWrite("red", " - 치명타 공격!\n");
+                    }
+                    else
+                    {
+                        TypingWrite("white", "]\n");
 
                     }
 
@@ -148,55 +154,10 @@ namespace Revolver_6
                 TypingWrite("white", "HP ");
                 TypingWrite("red", $"{monster[input].HP}");
 
-<<<<<<< Updated upstream
-            TypingWrite("white", " ->");
-            monster[input].HP -= player_damage; //데미지 계산
-            if (monster[input].HP < 0) //체력이 마이너스가 되면 안되니까 음수로 되면 0으로 설정합니다.
-=======
                 TypingWrite("white", " ->");
                 monster[input].HP -= player_damage; //데미지 계산
                 if (monster[input].HP < 0) //체력이 마이너스가 되면 안되니까 음수로 되면 0으로 설정합니다.
                 {
-
-                    monster[input].HP = 0;
-                }
-                if (monster[input].HP == 0) // 몬스터의 체력이 0이 된다면 죽이는 로직
-                {
-                    TypingWrite("gray", " Dead\n");
-
-                    Monster_count--;
-                    Typing("red", "0.", "white", " 다음\n\n>>");
-
-                    WhatNum(0, 0);
-                    Player_turn = false; //플레이어의 턴이 종료됐으므로 false로 변경 후 몬스터의 턴 시작
-
-                    Console.Clear();
-
-                    Result.Player_Turn_End(Player_turn, Monster_count);
-                }
-                else //죽지 않았다면 남은 체력을 표시
-                {
-                    TypingWrite("white", $" {monster[input].HP} \n");
-
-
-
-                    //Typing("red", "0.", "white", " 다음\n\n>>");
-
-                    //WhatNum(0, 0);
-
-                    //Player_turn = false; //플레이어의 턴이 종료됐으므로 false로 변경 후 몬스터의 턴 시작
-
-                    //Console.Clear();
-
-                    //Result.Player_Turn_End(Player_turn, Monster_count);
-
-
-                }
-            }
-            // 스킬 선택시
-            else if (Player_Action == 2)
->>>>>>> Stashed changes
-            {
 
                     monster[input].HP = 0;
                 }
@@ -279,7 +240,7 @@ namespace Revolver_6
                     Typing("red", $"{Player_skill.MySkillList[input - 1].Skill_Name}을(를) 누구에게 사용합니까?\n>>");
                     int attmon = WhatNum(1, monster.Length) - 1; //몬스터 번호 지정
 
-                    while ((monster[attmon - 1].HP == 0))
+                    while ((monster[attmon].HP == 0))
                     {
 
                         Typing("yellow", "죽은 몬스터는 공격 할 수 없습니다!");
@@ -300,7 +261,7 @@ namespace Revolver_6
                     Typing("Red", "Battle!\n");
                     Typing("white", $"{Player.Name}의 {Player_skill.MySkillList[input - 1].Skill_Name}!");
                     TypingWrite("white", $"Lv.");
-                    TypingWrite("red", $"{monster[attmon - 1].Level}");
+                    TypingWrite("red", $"{monster[attmon].Level}");
 
 
                     for (int i = 0; i < Player_skill.MySkillList[input - 1].AttackTry; i++) //스킬 공격
@@ -513,218 +474,6 @@ namespace Revolver_6
             Console.Clear();
 
             Result.Player_Turn_End(Player_turn, Monster_count);
-        }
-
-
-<<<<<<< Updated upstream
-=======
-                        attmon = WhatNum(1, monster.Length) - 1;
-
-
-                    }
-
-
-                    Player.CurrentMP -= Player_skill.MySkillList[input - 1].Use_MP; //mp 소모
-
-
-                    int skill_damage = (int)(Player.Power * Player_skill.MySkillList[input - 1].Damage); // 데미지 계산
-
-
-                    Typing("Red", "Battle!\n");
-                    Typing("white", $"{Player.Name}의 {Player_skill.MySkillList[input - 1].Skill_Name}!");
-                    TypingWrite("white", $"Lv.");
-                    TypingWrite("red", $"{monster[attmon - 1].Level}");
-
-
-                    for (int i = 0; i < Player_skill.MySkillList[input - 1].AttackTry; i++) //스킬 공격
-
-                    {
-                        bool iscritical = false;   //크리티컬뜸?
-
-                        //bool isavoid = CheckAvoid(); //피함?
-                        //if (isavoid) // 10%확률로 회피했으면 데미지 0
-                        //{
-
-
-                        //    skill_damage = 0;
-
-                        //}
-
-                        iscritical = CheckCritical();
-                        if (iscritical)
-                        {
-                            skill_damage = (int)Math.Ceiling(skill_damage * 1.6);
-                            //크리티컬 발생시 데미지 1.6배로전환합니다.
-
-                        }
-
-
-
-
-                        //if (isavoid == true) //회피했을때  
-                        //{
-                        //    TypingWrite("white", $" {monster[attmon].Name}을(를) 공격했지만 아무 일도 일어나지 않았습니다...\n"); //TypingWrite 함수 갱신되기 전에 사용
-                        //    isavoid = false;
-
-                        //}
-                        //회피 안했을때
-
-
-
-                        // 아니 스킬은 회피가 안뜬다네요;;; 괜히 고민 했음
-                        Typing("white", $" {monster[attmon].Name}을(를) 맞췄습니다.");
-
-
-                        TypingWrite("white", $"{i + 1}번째 공격!");
-                        TypingWrite("red", $" {skill_damage} 데미지\n");
-
-
-                        if (iscritical == true)
-                        {
-
-                            TypingWrite("red", " - 치명타 공격!\n");
-                        }
-
-
-
-                        TypingWrite("white", $"Lv.");
-                        TypingWrite("red", $"{monster[attmon].Level} ");
-                        TypingWrite("white", $"{monster[attmon].Name}\n");
-                        TypingWrite("white", "HP ");
-                        TypingWrite("red", $"{monster[attmon].HP}");
-
-                        TypingWrite("white", " ->");
-                        monster[attmon].HP -= skill_damage; //데미지 계산
-                        if (monster[attmon].HP < 0) //체력이 마이너스가 되면 안되니까 음수로 되면 0으로 설정합니다.
-                        {
-
-                            monster[attmon].HP = 0;
-                        }
-                        if (monster[attmon].HP == 0) // 몬스터의 체력이 0이 된다면 죽이는 로직
-                        {
-                            TypingWrite("gray", " Dead\n");
-
-                            Monster_count--;
-                            Typing("red", "0.", "white", " 다음\n\n>>");
-
-                            WhatNum(0, 0);
-                            Player_turn = false; //플레이어의 턴이 종료됐으므로 false로 변경 후 몬스터의 턴 시작
-
-                            Console.Clear();
-
-                            Result.Player_Turn_End(Player_turn, Monster_count);
-                        }
-                        else //죽지 않았다면 남은 체력을 표시
-                        {
-                            TypingWrite("white", $" {monster[attmon].HP} \n");
-
-                        }
-
-                    }
-
-                }
-
-                else if (Player_skill.MySkillList[input - 1].TargetType == monster.Length) // 단일 공격이 아닐 때 
-                {
-                    Player.CurrentMP -= Player_skill.MySkillList[input - 1].Use_MP; //mp 소모
-
-
-                    int skill_damage = (int)(Player.Power * Player_skill.MySkillList[input - 1].Damage); // 데미지 계산
-
-
-                    Typing("Red", "Battle!\n");
-                    Typing("white", $"{Player.Name}의 {Player_skill.MySkillList[input - 1].Skill_Name}!");
-
-
-                    for (int i = 0; i < monster.Length; i++)
-                    {
-
-
-                        bool iscritical = false;
-                        iscritical = CheckCritical();
-                        if (iscritical)
-                        {
-                            skill_damage = (int)Math.Ceiling(skill_damage * 1.6);
-
-
-                            //크리티컬 발생시 데미지 1.6배로전환합니다.
-                            Typing("white", $" {monster[i].Name}을(를) 맞췄습니다.");
-
-
-
-                            TypingWrite("red", $" {skill_damage} 데미지");
-
-                            if (iscritical == true)
-                            {
-
-                                TypingWrite("red", " - 치명타 공격!\n");
-
-                                TypingWrite("\nwhite", $"Lv.");
-                                TypingWrite("red", $"{monster[i].Level} ");
-                                TypingWrite("white", $"{monster[i].Name}\n");
-                                TypingWrite("white", "HP ");
-                                TypingWrite("red", $"{monster[i].HP}");
-
-                                TypingWrite("white", " ->");
-                            }
-                        }
-
-
-
-                        else
-                        {
-
-                            TypingWrite("white", $" {monster[i].Name}을(를) 맞췄습니다.");
-
-
-
-                            Typing("red", $" {skill_damage} 데미지");
-                            TypingWrite("white", $"Lv.");
-                            TypingWrite("red", $"{monster[i].Level} ");
-                            TypingWrite("white", $"{monster[i].Name}\n");
-                            TypingWrite("white", "HP ");
-                            TypingWrite("red", $"{monster[i].HP}");
-
-                            TypingWrite("white", " ->");
-
-                        }
-
-                        monster[i].HP -= skill_damage; //데미지 계산
-                        if (monster[i].HP < 0) //체력이 마이너스가 되면 안되니까 음수로 되면 0으로 설정합니다.
-                        {
-
-                            monster[i].HP = 0;
-                        }
-                        if (monster[i].HP == 0) // 몬스터의 체력이 0이 된다면 죽이는 로직
-                        {
-                            TypingWrite("gray", " Dead\n");
-
-                            Monster_count--;
-
-
-                        }
-                        else //죽지 않았다면 남은 체력을 표시
-                        {
-                            TypingWrite("white", $" {monster[i].HP} \n");
-                        }
-                    }
-                }
->>>>>>> Stashed changes
-
-            }
-<<<<<<< Updated upstream
-=======
-
-            Typing("red", "0.", "white", " 다음\n\n>>");
-
-            WhatNum(0, 0);
-
-            Player_turn = false; //플레이어의 턴이 종료됐으므로 false로 변경 후 몬스터의 턴 시작
-
-            Console.Clear();
-
-            Result.Player_Turn_End(Player_turn, Monster_count);
->>>>>>> Stashed changes
         }
 
         internal static void Monster_Phase() //몬스터 턴입니다.
@@ -805,17 +554,14 @@ namespace Revolver_6
             Player.CurrentMP += 10; // 내 턴이 올 때 마나 10 회복
             My_Phase();
         }
-<<<<<<< Updated upstream
-        
-
-=======
 
         internal static void NewBattle()
         {
             Player_turn = true;
             Monster_count = monster.Length;
         }
->>>>>>> Stashed changes
+
+
         internal static void Rage() //rage가 5이상 부터 몬스터 공격력 체력 2배로 증가
         {
             if (rage >= 5)

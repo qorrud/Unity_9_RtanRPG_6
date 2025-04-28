@@ -72,7 +72,7 @@ namespace Revolver_6
             {
                 sum += monster[i].Gold;
             }
-            Player.Gold += sum; 
+            Player.Gold += sum;
         }
 
         public void BattleReward(int value)
@@ -97,9 +97,9 @@ namespace Revolver_6
                 int a = random.Next(1, 4);
                 GameManager.Instance.DummyInt1[i] = a;
             }
-            int[] weaponSell = new int[GameManager.Instance.DummyInt1[0]]; 
-            int[] protecterSell = new int[GameManager.Instance.DummyInt1[1]]; 
-            int[] normalSell = new int[GameManager.Instance.DummyInt1[2]]; 
+            int[] weaponSell = new int[GameManager.Instance.DummyInt1[0]];
+            int[] protecterSell = new int[GameManager.Instance.DummyInt1[1]];
+            int[] normalSell = new int[GameManager.Instance.DummyInt1[2]];
 
             for (int i = 0; i < 3; i++)
             {
@@ -138,6 +138,24 @@ namespace Revolver_6
         public static void AddItem(int key)
         {
             Data.Inventory.Add(ItemDB.Items[key]);
+        }
+
+        public static void RemoveItem(int key)
+        {
+            Data.Inventory.Remove(ItemDB.Items[key]);
+        }
+
+        public static void UsePotion(int index)
+        {
+            if (Data.Inventory[index-1].Index >= 200)
+            {
+                ExtraEffect.UseEffect("heal%", 50);
+                RemoveItem(Inventory[index-1].Index);
+            }
+            else
+            {
+                Helper.Typing("", "사용하실 수 없는 아이템입니다");
+            }
         }
     }
 }
