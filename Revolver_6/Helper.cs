@@ -141,7 +141,7 @@ namespace Revolver_6
 
         public static void UserSure()
         {
-            TypingWrite("", "아무키를 입력");
+            TypingWrite("magenta", "<아무키를 입력>");
             Console.ReadLine();
             Console.WriteLine();
         }
