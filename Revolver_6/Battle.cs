@@ -8,7 +8,7 @@ namespace Revolver_6
 {
     internal static class Battle
     {
-        static int mystage = 0;
+        public static int mystage = 1;
 
         static bool Player_turn = true; //플레이어의 턴은 true 몬스터의 턴은 false로 할게요
         static int Monster_count = monster.Length; //몬스터 개수를 새기위한 카운트입니다. Dead 됐을시 1개씩 차감하고 0이되면 전투에서 승리한 걸로 취급
@@ -19,7 +19,6 @@ namespace Revolver_6
         //플레이어의 턴일때 실행되는 함수입니다. 플레이어의 턴이 끝나면  turn 은 false로 변경해서 적의 턴으로 넘어갑니다.
         {
             int floor = GameManager.Instance.Difficulty / 3; // 층 숫자
-            mystage = (mystage % 3) + 1; // 구역 숫자
 
             if (Player.CurrentMP >= Player.MaxMp)  // 마나 초과 방지
             {
@@ -113,20 +112,20 @@ namespace Revolver_6
                     TypingWrite("white", $" {monster[input].Name}을(를) 공격했지만 아무 일도 일어나지 않았습니다...\n"); //TypingWrite 함수 갱신되기 전에 사용
                     isavoid = false;
 
-                }
-                else //회피 안했을때
+            }
+            else //회피 안했을때
+            {
+                TypingWrite("white", $" {monster[input].Name}을(를) 맞췄습니다. [데미지 : "); //TypingWrite 함수 갱신되기 전에 사용
+                TypingWrite("red", $"{player_damage}");
+              
+                if (iscritical == true && isavoid == false)
                 {
-                    TypingWrite("white", $" {monster[input].Name}을(를) 맞췄습니다. [데미지 : "); //TypingWrite 함수 갱신되기 전에 사용
-                    TypingWrite("red", $"{player_damage}");
-
-                    if (iscritical == true && isavoid == false)
-                    {
-                        TypingWrite("white", "]");
-                        TypingWrite("red", " - 치명타 공격!\n");
-                    }
-                    else
-                    {
-                        TypingWrite("white", "]\n");
+                    TypingWrite("white", "]");
+                    TypingWrite("red", " - 치명타 공격!\n");
+                }
+                else
+                {
+                    TypingWrite("white", "]\n");
 
                     }
 
@@ -143,10 +142,10 @@ namespace Revolver_6
                 TypingWrite("white", "HP ");
                 TypingWrite("red", $"{monster[input].HP}");
 
-                TypingWrite("white", " ->");
-                monster[input].HP -= player_damage; //데미지 계산
-                if (monster[input].HP < 0) //체력이 마이너스가 되면 안되니까 음수로 되면 0으로 설정합니다.
-                {
+            TypingWrite("white", " ->");
+            monster[input].HP -= player_damage; //데미지 계산
+            if (monster[input].HP < 0) //체력이 마이너스가 되면 안되니까 음수로 되면 0으로 설정합니다.
+            {
 
                     monster[input].HP = 0;
                 }
@@ -465,9 +464,6 @@ namespace Revolver_6
             Result.Player_Turn_End(Player_turn, Monster_count);
         }
 
-
-
-
         internal static void Monster_Phase() //몬스터 턴입니다.
         {
             Typing("Red", "Battle!\n");
@@ -535,9 +531,7 @@ namespace Revolver_6
 
                     }
 
-
                 }
-
 
 
             }
@@ -548,7 +542,7 @@ namespace Revolver_6
             Player.CurrentMP += 10; // 내 턴이 올 때 마나 10 회복
             My_Phase();
         }
-
+        
 
         internal static void Rage() //rage가 5이상 부터 몬스터 공격력 체력 2배로 증가
         {
@@ -558,8 +552,6 @@ namespace Revolver_6
                 {
                     monster[i].Attack *= 2;
                     monster[i].HP *= 2;
-
-
                 }
 
 

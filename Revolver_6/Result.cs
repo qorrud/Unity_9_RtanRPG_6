@@ -22,10 +22,19 @@ namespace Revolver_6
                 Typing("green", "Vitory!\n");
 
                 Typing("white", $"던전에서 몬스터 ", "red", $"{monster.Length}", "white", "마리를 잡았습니다.");
+<<<<<<< Updated upstream
+                Typing("red", "1.", "white", " 다음 전투","","2. 돌아가기");
+=======
                 ExtraEffect.GainExp();
                 ExtraEffect.LevelUp();
                 ExtraEffect.GainGold();
-                Typing("red", "1.", "white", " 다음 전투", "", "2. 돌아가기");
+                Typing("","현재 레벨: ","green",$"{Player.Level}");
+                Typing("", "현재 경험치: ","green",$"{Player.Exp}");
+                Typing("","소지 금액: ","green",$"{Player.Gold}");
+
+                
+                Typing("red", "1.", "white", " 다음 전투", "", "\t2. 돌아가기");
+>>>>>>> Stashed changes
 
                 int input = WhatNum(1, 2);
                 int value = ExtraEffect.MonsterValue();
@@ -40,16 +49,30 @@ namespace Revolver_6
 
                 switch (input)
                 {
-                    case 1:
+                    case 1:       //한번 초기화를 시켜야함 그래야 전투의 시작과 끝이 제대로 작동.
                         Console.Clear();
+<<<<<<< Updated upstream
+=======
+                        Battle.mystage = (Battle.mystage % 3) + 1;
                         monster = MonsterData.MonsterFactory.MonsterSpawn();
+                        //플레이어의 턴을 활성화 Player_turn = true; 
+                        //몬스터의 수 초기화 Monster_count = monster.Length; 
+                        // 위에 저렇게 했더니 Battle 스크립트 파일에 접근이 안돼서 거기서 메서드 만들어서 접근
+                        Battle.NewBattle();
+>>>>>>> Stashed changes
                         Battle.My_Phase();
                         break;
 
                     case 2:
                         Console.Clear();
+<<<<<<< Updated upstream
+=======
                         Typing("white", "던전 클리어!\n마을로 귀환합니다");
                         Typing("",".....",500);
+                        //몬스터 배열이 초기화가 안돼서 발생한 문제!!
+                        //초기화 시켜주는 함수 추가
+                        monster = new MonsterData.MonsterStat[0];
+>>>>>>> Stashed changes
                         GameManager.Instance.TurnEnd();
                         break;
                 }
